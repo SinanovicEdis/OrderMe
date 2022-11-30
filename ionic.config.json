@@ -1,0 +1,7 @@
+{
+  "name": "OrderMe",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
