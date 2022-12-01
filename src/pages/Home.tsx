@@ -1,5 +1,6 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
+import { logOut } from '../firebaseConfig';
 import './Home.css';
 
 const Home: React.FC = () => {
@@ -16,7 +17,7 @@ const Home: React.FC = () => {
             <IonTitle size="large">Blank</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer />
+        <IonButton onClick={() => logOut()}>Sign out</IonButton>
       </IonContent>
     </IonPage>
   );

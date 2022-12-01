@@ -1,8 +1,8 @@
-import { Redirect, Route } from 'react-router-dom';
+import { Link, Redirect, Route, Switch } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
-
+import Login from './pages/Login'
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -21,22 +21,60 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import GuardedRoute from './utils/GuardedRoute';
+import { getAuthState } from './firebaseConfig';
+import { getAuth } from 'firebase/auth'
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+
+function App() {
+  const [isAutheticated, setisAutheticated] = useState<Boolean>(false)
+
+  // useEffect(() => {
+
+  //   const getUserAuth = async () => {
+  //     getAuth().onAuthStateChanged(async function (user) {
+  //       if (user) {
+  //         console.warn("user prijavljen");
+  //         localStorage.setItem("prijavljen", "true")
+  //         setisAutheticated(true)
+  //       } else {
+  //         console.warn("User ni prijavljen")
+  //         localStorage.removeItem("prijavljen")
+  //         setisAutheticated(false)
+  //       }
+  //     });
+  //   }
+
+  //   getUserAuth()
+
+  //   console.warn("To je isAuthenticated: " + isAutheticated)
+
+  // }, [isAutheticated]);
+
+  useEffect(() => {
+
+    const res = getAuthState()
+
+    console.warn(localStorage.getItem("prijavljen"))
+
+  }, []);
+
+  return (
+    < IonApp >
+      <IonReactRouter>
+        <Switch>
+          <Route exact path='/' component={Login} />
+          <Route path='/login' component={Login} />
+          <GuardedRoute path='/home' component={Home} auth={localStorage.getItem("prijavljen")} />
+        </Switch>
+      </IonReactRouter>
+    </IonApp >
+
+  )
+};
 
 export default App;
+
+
