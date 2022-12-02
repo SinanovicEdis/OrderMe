@@ -8,8 +8,9 @@
     "@capacitor/haptics": "4.1.0",
     "@capacitor/keyboard": "4.1.0",
     "@capacitor/status-bar": "4.1.0",
-    "@ionic/react": "^6.0.0",
+    "@ionic/react": "^6.3.9",
     "@ionic/react-router": "^6.0.0",
+    "@reacticons/ionicons": "^6.0.4",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^12.6.3",
@@ -21,7 +22,7 @@
     "@types/react-router-dom": "^5.1.7",
     "firebase": "^9.14.0",
     "history": "^4.9.0",
-    "ionicons": "^6.0.3",
+    "ionicons": "^6.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^5.2.0",
@@ -67,7 +68,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "4.5.0"
+    "@capacitor/cli": "4.5.0",
+    "@ionic/cli": "6.20.4"
   },
   "description": "An Ionic project"
 }

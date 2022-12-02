@@ -1,7 +1,7 @@
 import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import { logOut } from '../firebaseConfig';
-import './Home.css';
+import '../styles/Home.css'
 
 const Home: React.FC = () => {
   return (

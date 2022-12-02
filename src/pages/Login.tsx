@@ -1,11 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonPage, IonInput, IonButton, IonText, useIonAlert, IonHeader, IonToolbar, isPlatform } from '@ionic/react';
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonPage, IonInput, IonButton, IonText, useIonAlert, IonHeader, IonToolbar, isPlatform, IonRouterLink, IonNavLink, IonLabel, IonItem, IonImg, IonTitle } from '@ionic/react';
 import { loginUser, loginWithGoogle, logOut } from '../firebaseConfig';
-// import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth'
-import './Login.css'
-import { getAuth } from 'firebase/auth';
-
+import '../styles/Login.css'
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState("")
@@ -27,7 +24,6 @@ const Login: React.FC = () => {
             }
         }
     }
-
 
     async function loginUsrWithGoogle() {
         const res = await loginWithGoogle()
@@ -70,32 +66,31 @@ const Login: React.FC = () => {
                 <IonToolbar>
                 </IonToolbar>
             </IonHeader>
+
             <IonContent>
                 <IonCard>
                     <IonCardHeader>
-                        <IonCardTitle>Login</IonCardTitle>
-                        <IonCardSubtitle>Please login to use App</IonCardSubtitle>
+                        <IonCardSubtitle color={"medium"} >PRIJAVI SE ZA UPORABO APLIKACIJE</IonCardSubtitle>
+                        <IonCardTitle color={"favorite-white"}>Prijava</IonCardTitle>
                     </IonCardHeader>
-                    <div id='card-contenting'>
-                        <IonCard>
-                            <div id='card-input'>
-                                <div id='email-input'>
-                                    <IonInput placeholder='Username (email)' type='email' onIonChange={(e: any) => setUsername(e.target.value)}></IonInput>
-                                </div>
-                                <div style={{ padding: "1px" }}></div>
-                                <div id='password-input'>
-                                    <IonInput placeholder='Password' type='password' onIonChange={(e: any) => setPassword(e.target.value)}></IonInput>
-                                </div>
-                            </div>
-                        </IonCard>
-                    </div>
-                    <div id='card-buttons'>
-                        <IonButton onClick={() => loginUsr()}>Login</IonButton>
-                        <IonButton onClick={() => loginUsrWithGoogle()}>Login with google</IonButton>
-                        <IonButton onClick={() => logOut()}>Sign out</IonButton>
-                        <IonButton routerLink='/register'>Create account</IonButton>
-                    </div>
-                    <IonCardContent>
+                    <IonCardContent className='edis'>
+                        <IonText className='userText' color={"favorite-white"}>Email</IonText>
+                        <IonInput className='userInput' color={"favorite-black"} placeholder='  Username (email)' type='email' onIonChange={(e: any) => setUsername(e.target.value)}></IonInput>
+
+                        <p style={{ padding: "2px" }}></p>
+
+                        <IonText className='userText' color={"favorite-white"}>Password</IonText>
+                        <IonInput className='userInput' color={"favorite-black"} placeholder='  Password' type='password' onIonChange={(e: any) => setPassword(e.target.value)}></IonInput>
+                        <IonCardContent class='login-card-buttons'>
+                            <IonButton onClick={() => loginUsr()}>Login</IonButton>
+                            <IonText><a className='create-account-link' href='/registration' style={{ color: "white" }}>Nimaš računa? Ustvari ga!</a></IonText>
+                        </IonCardContent>
+
+                        <div className='providersLogin'>
+                            <IonImg className='provider' src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1280px-Google_%22G%22_Logo.svg.png'></IonImg>
+                            <IonLabel className='provider'></IonLabel>
+                            <IonImg className='provider' src='https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/1024px-Facebook_f_logo_%282021%29.svg.png?20210818083032'></IonImg>
+                        </div>
                     </IonCardContent>
                 </IonCard>
             </IonContent>
