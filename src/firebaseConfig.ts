@@ -106,25 +106,20 @@ export async function logOut() {
     });
 }
 
-
-
-
-
 export async function registerUser(email: string, password: string) {
     try {
         const res = await firebase.createUserWithEmailAndPassword(auth, email, password)
-        localStorage.setItem("user", JSON.stringify(res.user))
-        return true
+        return res
     }
     catch (error) {
-        return false
+        return null
     }
 }
 
 export async function getAuthState() {
     firebase.getAuth().onAuthStateChanged(async function (user) {
         if (user) {
-            console.warn("user prijavljen");
+            console.warn("user prijavljen: " + JSON.stringify(user));
             localStorage.setItem("prijavljen", "true")
             return true
         } else {
