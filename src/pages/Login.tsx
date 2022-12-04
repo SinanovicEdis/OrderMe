@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonPage, IonInput, IonButton, IonText, useIonAlert, IonHeader, IonToolbar, isPlatform, IonRouterLink, IonNavLink, IonLabel, IonItem, IonImg, IonTitle } from '@ionic/react';
-import { loginUser, loginWithGoogle, logOut } from '../firebaseConfig';
+import { loginUser, loginWithFacebook, loginWithGoogle } from '../firebaseConfig';
 import '../styles/Login.css'
 
 const Login: React.FC = () => {
@@ -88,9 +88,9 @@ const Login: React.FC = () => {
                         </IonCardContent>
 
                         <div className='providersLogin'>
-                            <IonImg className='provider' src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1280px-Google_%22G%22_Logo.svg.png'></IonImg>
+                            <IonImg className='provider' src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1280px-Google_%22G%22_Logo.svg.png' onClick={() => loginWithGoogle()}></IonImg>
                             <IonLabel className='provider'></IonLabel>
-                            <IonImg className='provider' src='https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/1024px-Facebook_f_logo_%282021%29.svg.png?20210818083032'></IonImg>
+                            <IonImg className='provider' src='https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/1024px-Facebook_f_logo_%282021%29.svg.png?20210818083032' onClick={() => loginWithFacebook()}></IonImg>
                         </div>
                     </IonCardContent>
                 </IonCard>

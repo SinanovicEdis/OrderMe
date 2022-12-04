@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { browserPopupRedirectResolver, browserSessionPersistence, getAuth, GoogleAuthProvider, reload, signInWithPopup, signInWithRedirect, signOut } from "firebase/auth"
+import { browserPopupRedirectResolver, browserSessionPersistence, FacebookAuthProvider, getAuth, GoogleAuthProvider, reload, signInWithPopup, signInWithRedirect, signOut } from "firebase/auth"
 import * as firebase from "firebase/auth"
 import { indexedDBLocalPersistence, initializeAuth } from 'firebase/auth';
 import { Capacitor } from '@capacitor/core';
@@ -62,14 +62,13 @@ export async function loginWithGoogle() {
         const provider = new GoogleAuthProvider()
         // provider.addScope('profile');
         // provider.addScope('email');
-        await signInWithPopup(auth, provider).then((result) => {
+        await signInWithRedirect(auth, provider).then((result) => {
             // This gives you a Google Access Token. You can use it to access the Google API.
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential?.accessToken;
             // The signed-in user info.
-            const user = result.user;
-            localStorage.setItem("googleUser", JSON.stringify(user))
-            // ...
+            const user = result;
+            console.warn("google user: " + JSON.stringify(user))
         }).catch((error) => {
             // Handle Errors here.
             const errorCode = error.code;
@@ -92,6 +91,38 @@ export async function loginWithGoogle() {
         return false
     }
 }
+
+export async function loginWithFacebook() {
+    const auth = getAuth()
+    const provider = new FacebookAuthProvider()
+
+    await signInWithRedirect(auth, provider).then((result) => {
+        // The signed-in user info.
+        const user = result
+
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        const credential = FacebookAuthProvider.credentialFromResult(result);
+        const accessToken = credential?.accessToken;
+        console.warn("facebook user: " + JSON.stringify(user))
+        // ...
+    })
+        .catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = FacebookAuthProvider.credentialFromError(error);
+            console.warn("Zgodila se je napaka")
+            console.warn(error)
+            console.warn(errorCode)
+            return false
+            // ...
+        });
+    return true
+}
+
 export async function logOut() {
     const auth = getAuth()
     await signOut(auth).then(() => {
@@ -99,8 +130,8 @@ export async function logOut() {
         localStorage.removeItem("googleUser")
         alert("Sign out successful")
         window.location.reload()
-        // window.location.assign("/")
     }).catch((error) => {
+        alert("Error Sign out")
         console.warn("Napaka pri sign out! " + error)
         // An error happened.
     });
