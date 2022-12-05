@@ -25,6 +25,7 @@ import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import GuardedRoute from './utils/GuardedRoute';
 import { getAuthState } from './firebaseConfig';
 import Registration from './pages/Registration';
+import ScanQR from './pages/ScanQR';
 
 setupIonicReact();
 
@@ -70,6 +71,7 @@ function App() {
           <Route path='/login' component={Login} />
           <Route path='/registration' component={Registration} />
           <GuardedRoute path='/home' component={Home} auth={localStorage.getItem("prijavljen")} />
+          <GuardedRoute path='/scan' component={ScanQR} auth={localStorage.getItem("prijavljen")} />
         </Switch>
       </IonReactRouter>
     </IonApp >

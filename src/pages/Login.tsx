@@ -74,7 +74,7 @@ const Login: React.FC = () => {
                         <IonCardSubtitle color={"medium"} >PRIJAVI SE ZA UPORABO APLIKACIJE</IonCardSubtitle>
                         <IonCardTitle color={"favorite-white"}>Prijava</IonCardTitle>
                     </IonCardHeader>
-                    <IonCardContent className='edis'>
+                    <IonCardContent>
                         <IonText className='userText' color={"favorite-white"}>Email</IonText>
                         <IonInput className='userInput' color={"favorite-black"} placeholder='  Username (email)' type='email' onIonChange={(e: any) => setUsername(e.target.value)}></IonInput>
 
