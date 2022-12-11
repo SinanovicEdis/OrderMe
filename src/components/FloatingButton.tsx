@@ -1,10 +1,17 @@
 import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFab, IonFabButton, IonIcon, IonFabList } from '@ionic/react';
 import { chevronDownCircle, home, cart, person, heart, arrowDownCircle } from 'ionicons/icons';
 
-const FloatingButton: React.FC = () => {
+interface IPositionProps {
+    slot: string,
+    vertical: "top" | "bottom" | "center" | undefined,
+    horizontal: "start" | "center" | "end" | undefined;
+    edge: boolean | undefined;
+}
+
+const FloatingButton = (props: IPositionProps) => {
     return (
         <IonContent className="ion-padding">
-            <IonFab slot="fixed" vertical="top" horizontal="start" edge={false}>
+            <IonFab slot={props.slot} vertical={props.vertical} horizontal={props.horizontal} edge={props.edge}>
                 <IonFabButton>
                     <IonIcon icon={arrowDownCircle}></IonIcon>
                 </IonFabButton>

@@ -11,7 +11,7 @@ const Home: React.FC = () => {
         <IonToolbar></IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <FloatingButton />
+        <FloatingButton slot='fixed' vertical='top' horizontal='start' edge={false} />
         <IonButton onClick={() => logOut()}>Sign out</IonButton>
       </IonContent>
     </IonPage>
