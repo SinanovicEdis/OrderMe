@@ -12,7 +12,7 @@ const ScanQR: React.FC = () => {
                     <BackButton path={"home"}></BackButton>
                 </IonToolbar>
             </IonHeader>
-            <IonContent fullscreen>
+            <IonContent fullscreen style={{ Height: "100%" }}>
                 <div className="title">
                     <div style={{ whiteSpace: "normal", fontSize: "5.0vw" }}>
                         <IonLabel color={"favorite-black"} className="title-content">Poskeniraj QR kodo,</IonLabel>

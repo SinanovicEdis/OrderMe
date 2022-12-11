@@ -16,10 +16,6 @@
     --ion-color-base: var(--ion-color-favorite-green);
 }
 
-.scan-btn {
-    width: fit-content
-}
-
 .title {
     font-weight: bold;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -34,19 +30,26 @@
     justify-content: center;
     align-items: center;
 
-    height: 30%;
-}
-
-.qr-code-img {
-    width: 50%;
+    height: 50vh;
 }
 
 .div-button {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    position: relative;
+
 }
 
+.qr-code-img {
+    width: 30vh;
+}
+
+.scan-btn {
+    position: absolute;
+    bottom: 0;
+}
 
 .grid-container {
     display: grid;

@@ -1,5 +1,6 @@
-import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFab, IonFabButton, IonIcon, IonFabList, IonItem } from '@ionic/react';
+import { chevronDownCircle, home, cart, person, heart, colorPalette, document, globe } from 'ionicons/icons';
+import FloatingButton from '../components/FloatingButton';
 import { logOut } from '../firebaseConfig';
 import '../styles/Home.css'
 
@@ -7,16 +8,10 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonTitle>Blank</IonTitle>
-        </IonToolbar>
+        <IonToolbar></IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+        <FloatingButton />
         <IonButton onClick={() => logOut()}>Sign out</IonButton>
       </IonContent>
     </IonPage>
