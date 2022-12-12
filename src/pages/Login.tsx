@@ -18,7 +18,7 @@ const Login: React.FC = () => {
         else {
             const res = await loginUser(username, password)
             if (await res === true) {
-                window.location.assign('/home')
+                window.location.assign('/scan')
             }
             if (await res === false) {
                 // alert("Nepravilni podatki")

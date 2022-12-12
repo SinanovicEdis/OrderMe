@@ -5,6 +5,10 @@ import "../styles/ScanQR.css"
 import BackButton from "../components/BackButton";
 const ScanQR: React.FC = () => {
 
+    function onHomePage() {
+        window.location.assign("home")
+    }
+
     return (
         <IonPage>
             <IonHeader>
@@ -26,7 +30,7 @@ const ScanQR: React.FC = () => {
                 </div>
 
                 <div className="div-button" style={{ backgroundColor: "", height: "20%" }}>
-                    <IonButton color={"favorite-green"} className="scan-btn">
+                    <IonButton color={"favorite-green"} className="scan-btn" onClick={() => onHomePage()}>
                         <IonIcon color="favorite-white" src={scanIcon}></IonIcon>
                         &nbsp; Scan QR code</IonButton>
                 </div>

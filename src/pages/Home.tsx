@@ -22,11 +22,10 @@ const Home: React.FC = () => {
         <div className='middle'>
           <div className='grid-item'>
             <SearchBar />
-            {/* <IonButton onClick={() => logOut()}>Sign out</IonButton> */}
           </div>
         </div>
         <div className='menu'>
-
+          <IonButton onClick={() => logOut()}>Sign out</IonButton>
         </div>
         <div>
 

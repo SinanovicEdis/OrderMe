@@ -67,7 +67,9 @@ function App() {
     < IonApp >
       <IonReactRouter>
         <Switch>
-          <Route exact path='/' component={Login} />
+          {
+            localStorage.getItem("prijavljen") ? <Route exact path='/' component={Home} /> : <Route exact path='/' component={Login}></Route>
+          }
           <Route path='/login' component={Login} />
           <Route path='/registration' component={Registration} />
           <GuardedRoute path='/home' component={Home} auth={localStorage.getItem("prijavljen")} />
