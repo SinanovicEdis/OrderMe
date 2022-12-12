@@ -1,6 +1,7 @@
 import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonFabButton, IonIcon, IonFabList, IonItem } from '@ionic/react';
 import FloatingButton from '../components/FloatingButton';
 import SearchBar from '../components/SearchBar';
+import SegmentFilter from '../components/SegmentFilter';
 import { logOut } from '../firebaseConfig';
 import '../styles/Home.css'
 
@@ -22,13 +23,11 @@ const Home: React.FC = () => {
         <div className='middle'>
           <div className='grid-item'>
             <SearchBar />
+            <SegmentFilter />
           </div>
         </div>
         <div className='menu'>
           <IonButton onClick={() => logOut()}>Sign out</IonButton>
-        </div>
-        <div>
-
         </div>
       </IonContent>
     </IonPage>

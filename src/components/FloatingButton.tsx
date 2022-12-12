@@ -1,5 +1,6 @@
 import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFab, IonFabButton, IonIcon, IonFabList } from '@ionic/react';
-import { chevronDownCircle, home, cart, person, heart, arrowDownCircle } from 'ionicons/icons';
+import { scan, home, cart, person, heart, arrowDownCircle } from 'ionicons/icons';
+import { Redirect } from 'react-router';
 
 interface IPositionProps {
     slot: string,
@@ -16,8 +17,11 @@ const FloatingButton = (props: IPositionProps) => {
                     <IonIcon icon={arrowDownCircle}></IonIcon>
                 </IonFabButton>
                 <IonFabList side="bottom">
-                    <IonFabButton>
+                    {/* <IonFabButton>
                         <IonIcon icon={home}></IonIcon>
+                    </IonFabButton> */}
+                    <IonFabButton onClick={() => window.location.assign("scan")}>
+                        <IonIcon icon={scan}></IonIcon>
                     </IonFabButton>
                     <IonFabButton>
                         <IonIcon icon={cart}></IonIcon>
