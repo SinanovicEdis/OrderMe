@@ -1,0 +1,58 @@
+:root {
+    --ion-color-favorite-button: #7F5539;
+}
+
+.ion-color-favorite-button {
+    --ion-color-base: var(--ion-color-favorite-button);
+}
+
+.menu {
+    /* border: solid 1px blueviolet; */
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 10px;
+    /* height: 100%; */
+
+}
+
+.menu2 {
+    /* border: solid 1px blueviolet; */
+    display: grid;
+    grid-template-columns: auto;
+    padding: 10px;
+    text-align: center;
+    /* height: 100%; */
+}
+
+.menu-btn {
+    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+    width: 70%;
+    height: 30px;
+    margin: auto;
+    margin-top: 4px;
+}
+
+.menu-item {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    font-size: 5vw;
+    text-align: center;
+
+    width: auto;
+    height: 17vh;
+
+    margin: auto;
+    margin-bottom: -20px;
+
+    border-radius: 10%;
+    overflow: hidden;
+}
+
+ion-img::part {
+    border-radius: 10px !important;
+}
+
+/* .menu-item-btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+} */

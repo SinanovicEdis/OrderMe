@@ -26,6 +26,7 @@ import GuardedRoute from './utils/GuardedRoute';
 import { getAuthState } from './firebaseConfig';
 import Registration from './pages/Registration';
 import ScanQR from './pages/ScanQR';
+import UserInfo from './pages/UserInfo';
 
 setupIonicReact();
 
@@ -74,6 +75,7 @@ function App() {
           <Route path='/registration' component={Registration} />
           <GuardedRoute path='/home' component={Home} auth={localStorage.getItem("prijavljen")} />
           <GuardedRoute path='/scan' component={ScanQR} auth={localStorage.getItem("prijavljen")} />
+          <GuardedRoute path='/user' component={UserInfo} auth={localStorage.getItem("prijavljen")} />
         </Switch>
       </IonReactRouter>
     </IonApp >
