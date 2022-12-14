@@ -20,10 +20,6 @@ const SearchBar = () => {
 
     }
 
-    useEffect(() => {
-        console.error("to so results: " + results)
-    })
-
     return (
         <>
             <IonSearchbar color={"medium"} placeholder="Poišči pijačo" debounce={1000} onIonChange={(ev) => handleChange(ev)}></IonSearchbar>

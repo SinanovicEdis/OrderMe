@@ -22,7 +22,7 @@ const FloatingButton = (props: IPositionProps) => {
                     <IonFabButton onClick={() => window.location.assign("scan")}>
                         <IonIcon icon={scan}></IonIcon>
                     </IonFabButton>
-                    <IonFabButton>
+                    <IonFabButton onClick={() => window.location.assign("cart")}>
                         <IonIcon icon={cart}></IonIcon>
                     </IonFabButton>
                     <IonFabButton onClick={() => window.location.assign("user")}>

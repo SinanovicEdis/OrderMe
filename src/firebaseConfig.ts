@@ -12,12 +12,13 @@ import getUserState from './App'
 const firebaseConfig = {
     apiKey: "AIzaSyDZ2SsfwRIAyo4zsz-tOTRdiFz0LCvFY-A",
     authDomain: "orderme-c0395.firebaseapp.com",
+    databaseURL: "https://orderme-c0395-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "orderme-c0395",
     storageBucket: "orderme-c0395.appspot.com",
     messagingSenderId: "615841800678",
     appId: "1:615841800678:web:e458abc0f260cd4043f627",
     measurementId: "G-M87NZ4FX4C"
-}; let logged = false
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
