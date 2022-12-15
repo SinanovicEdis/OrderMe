@@ -75,12 +75,15 @@ const Login: React.FC = () => {
                         <IonCardTitle color={"favorite-white"}>Prijava</IonCardTitle>
                     </IonCardHeader>
                     <IonCardContent>
-                        <IonText className='userText' color={"favorite-white"}>Email</IonText>
-                        <IonInput className='userInput' color={"favorite-black"} placeholder='  Username (email)' type='email' onIonChange={(e: any) => setUsername(e.target.value)}></IonInput>
+                        <div className='userText'>
+                            <IonText color={"favorite-white"}>Email</IonText>
+                        </div>
+                        <IonInput className='userInput' color={"favorite-black"} placeholder='  Email' type='email' onIonChange={(e: any) => setUsername(e.target.value)}></IonInput>
 
                         <p style={{ padding: "2px" }}></p>
-
-                        <IonText className='userText' color={"favorite-white"}>Password</IonText>
+                        <div className='userText'>
+                            <IonText color={"favorite-white"}>Password</IonText>
+                        </div>
                         <IonInput className='userInput' color={"favorite-black"} placeholder='  Password' type='password' onIonChange={(e: any) => setPassword(e.target.value)}></IonInput>
                         <IonCardContent class='login-card-buttons'>
                             <IonButton onClick={() => loginUsr()}>Login</IonButton>
