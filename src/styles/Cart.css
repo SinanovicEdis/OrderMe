@@ -21,7 +21,7 @@
 
     height: min-content;
 
-    margin: 20px;
+    margin: 5px;
 
     background-color: #aaa7a7;
     border-radius: 200px;
@@ -52,6 +52,5 @@ ion-avatar.item-item2 {
 
 img {
     object-fit: cover;
-
-    border-radius: 100px
+    border-radius: 100px;
 }

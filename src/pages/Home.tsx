@@ -1,14 +1,17 @@
 import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonImg, IonIcon, IonFabList, IonItem } from '@ionic/react';
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonLabel } from '@ionic/react';
+
 import FloatingButton from '../components/FloatingButton';
 import SearchBar from '../components/SearchBar';
 import SegmentFilter from '../components/SegmentFilter';
 import { getDatabase, ref, child, get } from "firebase/database";
-
+import { IonRippleEffect } from '@ionic/react';
 import axios from 'axios'
 
 import '../styles/Home.css'
 import '../styles/Menu.css'
 import { useEffect, useState } from 'react';
+import BackButton from '../components/BackButton';
 
 interface Artikel {
   title: string;
@@ -16,10 +19,12 @@ interface Artikel {
   ingredients: Array<string>;
   image: string;
   id: number
+  price: number
 }
 
 const Home: React.FC = () => {
   const [drinks, setDrinks] = useState<any>([])
+  const [selectedItem, setSelectedItem] = useState<Artikel | undefined>(undefined)
 
   const sendGetRequest = () => {
     return axios({
@@ -32,23 +37,20 @@ const Home: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log("use effect se izvaja...")
-    // sendGetRequest().then(data => setDrinks(data))
-
     const dbRef = ref(getDatabase());
-    get(child(dbRef, '/')).then((snapshot) => {
-      if (snapshot.exists()) {
-        var arr = snapshot.val()
-        setDrinks(arr)
-      }
-      else {
-        console.log("No data available");
-      }
-    }).catch((error) => {
-      console.warn(error.message);
-    });
-
-    console.log("Items in cart: " + localStorage.getItem("cart"))
+    if (drinks.length === 0) {
+      get(child(dbRef, '/')).then((snapshot) => {
+        if (snapshot.exists()) {
+          var arr = snapshot.val()
+          setDrinks(arr)
+        }
+        else {
+          console.log("No data available");
+        }
+      }).catch((error) => {
+        console.warn(error.message);
+      });
+    }
   }, [])
 
   function addArticleToCart(id: number) {
@@ -56,7 +58,8 @@ const Home: React.FC = () => {
     if (localStorage.getItem("cart")) {
       const articles = JSON.parse(localStorage.getItem("cart") || "")
       console.warn(articles)
-      articles.push({ title: article[0].title, description: article[0].description, ingredients: article[0].ingredients, image: article[0].image, id: article[0].image })
+      // articles.push({ title: article[0].title, description: article[0].description, ingredients: article[0].ingredients, image: article[0].image, id: article[0].id, price: article[0].price })
+      articles.push(article[0])
       localStorage.setItem("cart", JSON.stringify(articles))
     }
     else {
@@ -67,35 +70,62 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar></IonToolbar>
+        <IonToolbar>
+          {selectedItem &&
+            <>
+              <IonTitle>{selectedItem.title}</IonTitle>
+            </>
+          }
+        </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <div className='upper'>
-          <div className='upper-item-fabBtn'>
-            <FloatingButton slot='fixed' vertical='top' horizontal='start' edge={true} />
-          </div>
-          <div className='upper-item-text'>
-            <IonText color={"favorite-black"}><IonText color={"favorite-name"}><b>Edis</b></IonText>, <b>dobrodošel!</b></IonText>
-          </div>
-        </div>
-        <div className='middle'>
-          <div className='grid-item'>
-            <SearchBar />
-            <SegmentFilter />
-          </div>
-        </div>
-        <div className='menu'>
-          {drinks.map((drink: any) => (
-            <div className='menu2'>
-              <IonText color={"favorite-black"}>{drink.title}</IonText>
-              <IonImg className='menu-item' src={drink.image} alt='' />
-              <IonButton onClick={() => addArticleToCart(drink.id)} className='menu-btn' color={"favorite-button"}>Dodaj</IonButton>
+        {!selectedItem &&
+          <><div className='upper'>
+            <div className='upper-item-fabBtn'>
+              <FloatingButton slot='fixed' vertical='top' horizontal='start' edge={true} />
             </div>
-          ))}
-        </div>
+            <div className='upper-item-text'>
+              <IonText color={"favorite-black"}><IonText color={"favorite-name"}><b>Edis</b></IonText>, <b>dobrodošel!</b></IonText>
+            </div>
+          </div><div className='middle'>
+              <div className='grid-item'>
+                <SearchBar />
+                <SegmentFilter />
+              </div>
+            </div><div className='menu'>
+              {drinks?.map((drink: any) => (
+                <div className='menu2'>
+                  <IonText color={"favorite-black"}>{drink.title}</IonText>
+                  <IonImg className='menu-item' src={drink.image} alt='' onClick={() => { setSelectedItem(drink); }} />
 
+                  <IonButton onClick={() => addArticleToCart(drink.id)} className='menu-btn' color={"favorite-button"}>
+                    <IonRippleEffect>
+                    </IonRippleEffect>
+                    Dodaj
+                  </IonButton>
+
+                </div>
+              ))}
+            </div>
+          </>
+        }
+        {
+          selectedItem &&
+          <div className='item-card' onClick={() => setSelectedItem(undefined)}>
+            <IonCard>
+              <img src={selectedItem.image} alt="item img" />
+              <IonCardHeader>
+                <IonCardSubtitle>{selectedItem.title}</IonCardSubtitle>
+                <IonCardTitle>{(selectedItem.price).toFixed(2)}€</IonCardTitle>
+              </IonCardHeader>
+              <IonCardContent>
+                {selectedItem.description}
+              </IonCardContent>
+            </IonCard>
+          </div>
+        }
       </IonContent>
-    </IonPage>
+    </IonPage >
   );
 };
 

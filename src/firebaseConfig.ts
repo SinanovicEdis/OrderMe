@@ -129,6 +129,7 @@ export async function logOut() {
     await signOut(auth).then(() => {
         // Sign-out successful.
         localStorage.removeItem("googleUser")
+        localStorage.removeItem("cart")
         alert("Sign out successful")
         window.location.reload()
     }).catch((error) => {
