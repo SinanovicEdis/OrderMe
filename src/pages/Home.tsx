@@ -1,4 +1,4 @@
-import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonImg, IonIcon, IonFabList, IonItem } from '@ionic/react';
+import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonImg, IonLabel, IonFabList, IonItem } from '@ionic/react';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonSpinner } from '@ionic/react';
 
 import FloatingButton from '../components/FloatingButton';
@@ -11,7 +11,6 @@ import axios from 'axios'
 import '../styles/Home.css'
 import '../styles/Menu.css'
 import { useEffect, useState } from 'react';
-import BackButton from '../components/BackButton';
 
 interface Artikel {
   title: string;
@@ -52,14 +51,13 @@ const Home: React.FC = () => {
         console.warn(error.message);
       });
     }
+    setisLoaded(true)
   }, [])
 
   function addArticleToCart(id: number) {
     const article = drinks.filter((e: any) => e.id === id)
     if (localStorage.getItem("cart")) {
       const articles = JSON.parse(localStorage.getItem("cart") || "")
-      console.warn(articles)
-      // articles.push({ title: article[0].title, description: article[0].description, ingredients: article[0].ingredients, image: article[0].image, id: article[0].id, price: article[0].price })
       articles.push(article[0])
       localStorage.setItem("cart", JSON.stringify(articles))
     }
@@ -88,11 +86,10 @@ const Home: React.FC = () => {
             <div className='upper-item-text'>
               <IonText color={"favorite-black"}><IonText color={"favorite-name"}><b>Edis</b></IonText>, <b>dobrodošel!</b></IonText>
             </div>
-          </div><div className='middle'>
-              <div className='grid-item'>
-                <SearchBar />
-                <SegmentFilter />
-              </div>
+          </div>
+            <div className='middle'>
+              <SearchBar />
+              <SegmentFilter />
             </div><div className='menu'>
               {drinks?.map((drink: any) => (
                 <div className='menu2'>
@@ -113,7 +110,7 @@ const Home: React.FC = () => {
         {!isLoaded &&
           <>
             <IonItem>
-              <IonSpinner name='dots'></IonSpinner>
+              <IonSpinner name='dots' hidden={isLoaded}></IonSpinner>
             </IonItem>
           </>
         }
@@ -123,11 +120,11 @@ const Home: React.FC = () => {
             <IonCard>
               <img src={selectedItem.image} alt="item img" />
               <IonCardHeader>
-                <IonCardSubtitle>{selectedItem.title}</IonCardSubtitle>
-                <IonCardTitle>{(selectedItem.price).toFixed(2)}€</IonCardTitle>
+                <IonCardSubtitle color={'light'}>{selectedItem.title}</IonCardSubtitle>
+                <IonCardTitle color={"favorite-white"}>{(selectedItem.price).toFixed(2)}€</IonCardTitle>
               </IonCardHeader>
               <IonCardContent>
-                {selectedItem.description}
+                <IonLabel color={"medium"}>{selectedItem.description}</IonLabel>
               </IonCardContent>
             </IonCard>
           </div>

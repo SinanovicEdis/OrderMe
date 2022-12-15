@@ -1,20 +1,20 @@
 import React from 'react';
-import { IonButton, IonContent, IonHeader, IonPage, IonAvatar, IonToolbar, IonText, IonTitle, IonIcon, IonFabList, IonItem } from '@ionic/react';
+import { IonLabel, IonContent, IonHeader, IonPage, IonAvatar, IonToolbar, IonText, IonTitle, IonIcon, IonFabList, IonItem } from '@ionic/react';
 import { closeCircle } from 'ionicons/icons';
 import { useEffect, useState } from 'react';
 import BackButton from '../components/BackButton';
 import '../styles/Cart.css'
 const Cart: React.FC = () => {
     const [items, setItems] = useState<any>(JSON.parse(localStorage.getItem("cart") || ""))
-    const totalPrice = 0
+    const itemsCount = items.length
+    const totalPrice = (items.reduce((a: any, v: any) => a = a + v.price, 0)).toFixed(2)
 
-
+    const VAT = (totalPrice - (totalPrice / 1.22)).toFixed(2)
     function removeItem(item: any) {
         const articles = items.filter((e: any) => e !== item)
         localStorage.setItem("cart", JSON.stringify(articles))
         setItems(articles)
     }
-
 
     return (
         <IonPage>
@@ -36,6 +36,22 @@ const Cart: React.FC = () => {
                         </div>
                     ))}
                 </div>
+                {itemsCount ?
+                    <>
+                        <div className='info-container'>
+                            <IonLabel className='info-container-item'>Stevilo izdelkov</IonLabel>
+                            <IonLabel className='info-container-item'>{itemsCount}</IonLabel>
+                            <IonLabel className='info-container-item'>DDV</IonLabel>
+                            <IonLabel className='info-container-item'>{VAT}€</IonLabel>
+                            <IonLabel className='info-container-item-last'><b>Skupaj</b></IonLabel>
+                            <IonLabel className='info-container-item-last'><b>{totalPrice}€</b></IonLabel>
+                        </div>
+                    </>
+                    : <>
+                        <IonTitle>Košarica je prazna</IonTitle>
+                    </>
+                }
+
             </IonContent>
 
         </IonPage>
