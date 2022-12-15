@@ -1,5 +1,5 @@
 import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonImg, IonIcon, IonFabList, IonItem } from '@ionic/react';
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonLabel } from '@ionic/react';
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonSpinner } from '@ionic/react';
 
 import FloatingButton from '../components/FloatingButton';
 import SearchBar from '../components/SearchBar';
@@ -25,6 +25,7 @@ interface Artikel {
 const Home: React.FC = () => {
   const [drinks, setDrinks] = useState<any>([])
   const [selectedItem, setSelectedItem] = useState<Artikel | undefined>(undefined)
+  const [isLoaded, setisLoaded] = useState(false)
 
   const sendGetRequest = () => {
     return axios({
@@ -107,6 +108,13 @@ const Home: React.FC = () => {
                 </div>
               ))}
             </div>
+          </>
+        }
+        {!isLoaded &&
+          <>
+            <IonItem>
+              <IonSpinner name='dots'></IonSpinner>
+            </IonItem>
           </>
         }
         {
