@@ -1,6 +1,6 @@
 import React from 'react';
-import { IonLabel, IonContent, IonHeader, IonPage, IonAvatar, IonToolbar, IonText, IonTitle, IonIcon, IonFabList, IonItem } from '@ionic/react';
-import { closeCircle } from 'ionicons/icons';
+import { IonLabel, IonContent, IonHeader, IonPage, IonAvatar, IonToolbar, IonText, IonTitle, IonIcon, IonButton, IonItem } from '@ionic/react';
+import { closeCircle, cardOutline } from 'ionicons/icons';
 import { useEffect, useState } from 'react';
 import BackButton from '../components/BackButton';
 import '../styles/Cart.css'
@@ -45,6 +45,11 @@ const Cart: React.FC = () => {
                             <IonLabel className='info-container-item'>{VAT}€</IonLabel>
                             <IonLabel className='info-container-item-last'><b>Skupaj</b></IonLabel>
                             <IonLabel className='info-container-item-last'><b>{totalPrice}€</b></IonLabel>
+                        </div>
+
+                        <div className='buttons-container'>
+                            <IonButton color={"favorite-button-pay"}><b>Oddaj naročilo in plačaj</b> &nbsp; &nbsp; <IonIcon icon={cardOutline}></IonIcon></IonButton>
+                            <IonButton color={"favorite-button-pay"}><b>Oddaj naročilo</b></IonButton>
                         </div>
                     </>
                     : <>

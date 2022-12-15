@@ -1,3 +1,11 @@
+:root {
+    --ion-color-favorite-button-pay: #314D45;
+}
+
+.ion-color-favorite-button-pay {
+    --ion-color-base: var(--ion-color-favorite-button-pay);
+}
+
 .item-container {
     /* border: 1px solid black; */
     display: grid;
@@ -79,4 +87,18 @@ img {
 
 .info-container-item {
     border-bottom: 1px dotted rgba(0, 0, 0, 0.8);
+}
+
+.buttons-container {
+    display: grid;
+    grid-template-columns: auto;
+    padding: 10px;
+    margin: 3%;
+}
+
+.buttons-container-item {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
 }
