@@ -1,9 +1,10 @@
 import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonImg, IonLabel, IonFabList, IonItem } from '@ionic/react';
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonSpinner } from '@ionic/react';
-
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonSpinner, IonIcon } from '@ionic/react';
 import FloatingButton from '../components/FloatingButton';
 import SearchBar from '../components/SearchBar';
 import SegmentFilter from '../components/SegmentFilter';
+import { addCircleOutline, heartOutline } from 'ionicons/icons';
+
 import { getDatabase, ref, child, get } from "firebase/database";
 import { IonRippleEffect } from '@ionic/react';
 import axios from 'axios'
@@ -63,6 +64,18 @@ const Home: React.FC = () => {
     }
     else {
       localStorage.setItem("cart", JSON.stringify(article))
+    }
+  }
+
+  function addArticleToFavorite(id: number) {
+    const article = drinks.filter((e: any) => e.id === id)
+    if (localStorage.getItem("favorite")) {
+      const articles = JSON.parse(localStorage.getItem("cart") || "")
+      articles.push(article[0])
+      localStorage.setItem("favorite", JSON.stringify(articles))
+    }
+    else {
+      localStorage.setItem("favorite", JSON.stringify(article))
     }
   }
 
@@ -126,6 +139,10 @@ const Home: React.FC = () => {
               <IonCardContent>
                 <IonLabel color={"medium"}>{selectedItem.description}</IonLabel>
               </IonCardContent>
+              <IonCardTitle>
+                <IonIcon icon={addCircleOutline} onClick={() => addArticleToCart(selectedItem.id)} size='large' color='favorite-white' style={{ padding: "10px" }}></IonIcon>
+                <IonIcon icon={heartOutline} size='large' color='favorite-white' style={{ padding: "10px" }}></IonIcon>
+              </IonCardTitle>
             </IonCard>
           </div>
         }
