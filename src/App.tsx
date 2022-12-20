@@ -35,34 +35,9 @@ setupIonicReact();
 function App() {
   const [isAutheticated, setisAutheticated] = useState<Boolean>(false)
 
-  // useEffect(() => {
-
-  //   const getUserAuth = async () => {
-  //     getAuth().onAuthStateChanged(async function (user) {
-  //       if (user) {
-  //         console.warn("user prijavljen");
-  //         localStorage.setItem("prijavljen", "true")
-  //         setisAutheticated(true)
-  //       } else {
-  //         console.warn("User ni prijavljen")
-  //         localStorage.removeItem("prijavljen")
-  //         setisAutheticated(false)
-  //       }
-  //     });
-  //   }
-
-  //   getUserAuth()
-
-  //   console.warn("To je isAuthenticated: " + isAutheticated)
-
-  // }, [isAutheticated]);
-
   useEffect(() => {
-
     const res = getAuthState()
-
     console.warn(localStorage.getItem("prijavljen"))
-
   }, []);
 
   return (
@@ -74,12 +49,10 @@ function App() {
           }
           <Route path='/login' component={Login} />
           <Route path='/registration' component={Registration} />
-          {/* <GuardedRoute path='/home' component={Home} auth={localStorage.getItem("prijavljen")} /> */}
+          <GuardedRoute path='/home' component={Home} auth={localStorage.getItem("prijavljen")} />
           <GuardedRoute path='/scan' component={ScanQR} auth={localStorage.getItem("prijavljen")} />
           <GuardedRoute path='/user' component={UserInfo} auth={localStorage.getItem("prijavljen")} />
-          {/* <GuardedRoute path='/cart' component={Cart} auth={localStorage.getItem("prijavljen")} /> */}
-          <Route path='/cart' component={Cart} />
-          <Route path='/home' component={Home} />
+          <GuardedRoute path='/cart' component={Cart} auth={localStorage.getItem("prijavljen")} />
         </Switch>
       </IonReactRouter>
     </IonApp >

@@ -40,7 +40,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const dbRef = ref(getDatabase());
     if (drinks.length === 0) {
-      get(child(dbRef, '/')).then((snapshot) => {
+      get(child(dbRef, '/Drinks')).then((snapshot) => {
         if (snapshot.exists()) {
           var arr = snapshot.val()
           setDrinks(arr)

@@ -1,12 +1,14 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { browserPopupRedirectResolver, browserSessionPersistence, FacebookAuthProvider, getAuth, GoogleAuthProvider, reload, signInWithPopup, signInWithRedirect, signOut } from "firebase/auth"
+import { browserPopupRedirectResolver, browserSessionPersistence, FacebookAuthProvider, getAuth, GoogleAuthProvider, reload, signInWithPopup, signInWithRedirect, signOut, User } from "firebase/auth"
 import * as firebase from "firebase/auth"
 import { indexedDBLocalPersistence, initializeAuth } from 'firebase/auth';
-import { Capacitor } from '@capacitor/core';
+import { Capacitor, ExceptionCode } from '@capacitor/core';
 import { useState } from "react";
 import App from "./App";
 import getUserState from './App'
+import { userInfo } from "os";
+import UserInfo from "./pages/UserInfo";
 
 
 const firebaseConfig = {
@@ -154,15 +156,13 @@ export async function getAuthState() {
         if (user) {
             console.warn("user prijavljen: " + JSON.stringify(user));
             localStorage.setItem("prijavljen", "true")
+            localStorage.setItem("user", JSON.stringify(user))
             return true
         } else {
             console.warn("User ni prijavljen")
             localStorage.removeItem("prijavljen")
+            localStorage.removeItem("user")
             return false
         }
     });
 }
-
-
-
-

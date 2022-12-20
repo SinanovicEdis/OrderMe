@@ -3,7 +3,9 @@ import { IonLabel, IonContent, IonHeader, IonPage, IonAvatar, IonToolbar, IonTex
 import { closeCircle, cardOutline } from 'ionicons/icons';
 import { useEffect, useState } from 'react';
 import BackButton from '../components/BackButton';
+// import SubmitOrder from '../hooks/SubmitOrder'
 import '../styles/Cart.css'
+import SubmitOrder from '../hooks/SubmitOrder';
 const Cart: React.FC = () => {
     const [items, setItems] = useState<any>(JSON.parse(localStorage.getItem("cart") || ""))
     const itemsCount = items.length
@@ -49,7 +51,7 @@ const Cart: React.FC = () => {
 
                         <div className='buttons-container'>
                             <IonButton color={"favorite-button-pay"}><b>Oddaj naročilo in plačaj</b> &nbsp; &nbsp; <IonIcon icon={cardOutline}></IonIcon></IonButton>
-                            <IonButton color={"favorite-button-pay"}><b>Oddaj naročilo</b></IonButton>
+                            <IonButton color={"favorite-button-pay"} onClick={() => { SubmitOrder() }}><b>Oddaj naročilo</b></IonButton>
                         </div>
                     </>
                     : <>
