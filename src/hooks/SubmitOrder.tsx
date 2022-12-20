@@ -38,7 +38,8 @@ function SubmitOrder() {
         state: "ordered"
     })
 
-    // window.location.assign("home")
+    localStorage.removeItem("cart")
+    window.location.assign("order-submited")
 }
 
 export default SubmitOrder

@@ -28,6 +28,7 @@ import Registration from './pages/Registration';
 import ScanQR from './pages/ScanQR';
 import UserInfo from './pages/UserInfo';
 import Cart from './pages/Cart';
+import OrderSubmited from './pages/OrderSubmited';
 
 setupIonicReact();
 
@@ -53,6 +54,7 @@ function App() {
           <GuardedRoute path='/scan' component={ScanQR} auth={localStorage.getItem("prijavljen")} />
           <GuardedRoute path='/user' component={UserInfo} auth={localStorage.getItem("prijavljen")} />
           <GuardedRoute path='/cart' component={Cart} auth={localStorage.getItem("prijavljen")} />
+          <GuardedRoute path='/order-submited' component={OrderSubmited} auth={localStorage.getItem("prijavljen")} />
         </Switch>
       </IonReactRouter>
     </IonApp >
