@@ -39,12 +39,12 @@ const Cart: React.FC = () => {
                 {itemsCount ?
                     <>
                         <div className='info-container'>
-                            <IonLabel className='info-container-item'>Stevilo izdelkov</IonLabel>
-                            <IonLabel className='info-container-item'>{itemsCount}</IonLabel>
-                            <IonLabel className='info-container-item'>DDV</IonLabel>
-                            <IonLabel className='info-container-item'>{VAT}€</IonLabel>
-                            <IonLabel className='info-container-item-last'><b>Skupaj</b></IonLabel>
-                            <IonLabel className='info-container-item-last'><b>{totalPrice}€</b></IonLabel>
+                            <IonLabel className='info-container-item' color={"favorite-black"}>Stevilo izdelkov</IonLabel>
+                            <IonLabel className='info-container-item' color={"favorite-black"}>{itemsCount}</IonLabel>
+                            <IonLabel className='info-container-item' color={"favorite-black"}>DDV</IonLabel>
+                            <IonLabel className='info-container-item' color={"favorite-black"}>{VAT}€</IonLabel>
+                            <IonLabel className='info-container-item-last' color={"favorite-black"}><b>Skupaj</b></IonLabel>
+                            <IonLabel className='info-container-item-last' color={"favorite-black"}><b>{totalPrice}€</b></IonLabel>
                         </div>
 
                         <div className='buttons-container'>

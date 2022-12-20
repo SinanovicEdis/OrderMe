@@ -80,7 +80,6 @@ function App() {
           {/* <GuardedRoute path='/cart' component={Cart} auth={localStorage.getItem("prijavljen")} /> */}
           <Route path='/cart' component={Cart} />
           <Route path='/home' component={Home} />
-
         </Switch>
       </IonReactRouter>
     </IonApp >
