@@ -51,3 +51,15 @@
 .info-container-item {
     border-bottom: 1px dotted rgba(0, 0, 0, 0.8);
 }
+
+.finished-orders ion-label {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0%;
+    padding-left: 5%;
+    margin-bottom: -5px;
+    font-size: small;
+    color: gray;
+    text-transform: uppercase;
+}

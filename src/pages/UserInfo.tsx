@@ -24,6 +24,9 @@ const UserInfo: React.FC = () => {
             </div>
           </div>
           <div className='user-item'>
+            <div className='finished-orders'>
+              <IonLabel>Oddana naročila</IonLabel>
+            </div>
             <div className='info-container'>
               <IonLabel className='info-container-item' color={"favorite-black"}>Naročilo št. #1234</IonLabel>
               <div className='icon-arrow'>
