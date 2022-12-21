@@ -39,6 +39,8 @@ function SubmitOrder() {
     }).then(success => {
         localStorage.removeItem("cart")
         window.location.assign("order-submited")
+    }, error => {
+        alert("Error" + error)
     })
 }
 
