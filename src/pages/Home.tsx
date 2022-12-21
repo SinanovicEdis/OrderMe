@@ -19,6 +19,7 @@ interface Artikel {
   ingredients: Array<string>;
   image: string;
   id: number
+  uuid: string
   price: number
 }
 
@@ -55,8 +56,8 @@ const Home: React.FC = () => {
     setisLoaded(true)
   }, [])
 
-  function addArticleToCart(id: number) {
-    const article = drinks.filter((e: any) => e.id === id)
+  function addArticleToCart(uid_: string) {
+    const article = drinks.filter((e: any) => e.uuid === uid_)
     if (localStorage.getItem("cart")) {
       const articles = JSON.parse(localStorage.getItem("cart") || "")
       articles.push(article[0])
@@ -109,7 +110,7 @@ const Home: React.FC = () => {
                   <IonText color={"favorite-black"}>{drink.title}</IonText>
                   <IonImg className='menu-item' src={drink.image} alt='' onClick={() => { setSelectedItem(drink); }} />
 
-                  <IonButton onClick={() => addArticleToCart(drink.id)} className='menu-btn' color={"favorite-button"}>
+                  <IonButton onClick={() => addArticleToCart(drink.uuid)} className='menu-btn' color={"favorite-button"}>
                     <IonRippleEffect>
                     </IonRippleEffect>
                     Dodaj
@@ -140,7 +141,7 @@ const Home: React.FC = () => {
                 <IonLabel color={"medium"}>{selectedItem.description}</IonLabel>
               </IonCardContent>
               <IonCardTitle>
-                <IonIcon icon={addCircleOutline} onClick={() => addArticleToCart(selectedItem.id)} size='large' color='favorite-white' style={{ padding: "10px" }}></IonIcon>
+                <IonIcon icon={addCircleOutline} onClick={() => addArticleToCart(selectedItem.uuid)} size='large' color='favorite-white' style={{ padding: "10px" }}></IonIcon>
                 <IonIcon icon={heartOutline} size='large' color='favorite-white' style={{ padding: "10px" }}></IonIcon>
               </IonCardTitle>
             </IonCard>

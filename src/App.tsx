@@ -29,16 +29,15 @@ import ScanQR from './pages/ScanQR';
 import UserInfo from './pages/UserInfo';
 import Cart from './pages/Cart';
 import OrderSubmited from './pages/OrderSubmited';
+import React from 'react';
 
 setupIonicReact();
-
 
 function App() {
   const [isAutheticated, setisAutheticated] = useState<Boolean>(false)
 
   useEffect(() => {
     const res = getAuthState()
-    console.warn(localStorage.getItem("prijavljen"))
   }, []);
 
   return (
