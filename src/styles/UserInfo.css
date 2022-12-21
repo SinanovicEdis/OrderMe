@@ -7,7 +7,6 @@
 }
 
 .user-item {
-    border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 20px;
     font-size: 30px;
     text-align: center;
@@ -49,7 +48,7 @@
 }
 
 .info-container-item {
-    border-bottom: 1px dotted rgba(0, 0, 0, 0.8);
+    border-bottom: 1px dotted rgba(0, 0, 0, 0);
 }
 
 .finished-orders ion-label {

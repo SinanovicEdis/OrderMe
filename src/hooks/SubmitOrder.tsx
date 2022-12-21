@@ -30,16 +30,16 @@ function SubmitOrder() {
     });
 
     const path = '/Orders/' + user.uid + "_" + uuid();
-    set(ref(db, path), {
+    var res = set(ref(db, path), {
         user: user.email,
-        user_id: user.uid,
+        user_uid: user.uid,
         drinks: data,
         price: totalPrice,
         state: "ordered"
+    }).then(success => {
+        localStorage.removeItem("cart")
+        window.location.assign("order-submited")
     })
-
-    localStorage.removeItem("cart")
-    window.location.assign("order-submited")
 }
 
 export default SubmitOrder
