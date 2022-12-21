@@ -5,13 +5,12 @@ import { logOut } from '../firebaseConfig';
 
 import '../styles/UserInfo.css'
 import { useEffect, useState } from 'react';
-import GetOrders from '../hooks/GetOrders';
 import { get, getDatabase, ref } from 'firebase/database';
 
 const UserInfo: React.FC = () => {
-  const [orders, setorders] = useState<any>()
+  const [orders, setorders] = useState<any[]>([])
 
-  function GetOrderss() {
+  function GetOrders() {
     const user = JSON.parse(localStorage.getItem("user") || "")
     var data: any = []
     var filteredUserOrders: any = []
@@ -37,7 +36,7 @@ const UserInfo: React.FC = () => {
   }
 
   useEffect(() => {
-    GetOrderss()
+    GetOrders()
   }, [])
 
 
@@ -46,7 +45,7 @@ const UserInfo: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <BackButton path={"home"}></BackButton>
-          <IonTitle>Uporabnik</IonTitle>
+          <IonTitle>{orders.length}</IonTitle>
           <IonIcon icon={logOutOutline} size="large" style={{ paddingRight: "10px" }} slot="end" onClick={() => { logOut() }}></IonIcon>
         </IonToolbar>
       </IonHeader>
