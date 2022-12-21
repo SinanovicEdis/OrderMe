@@ -29,8 +29,10 @@ function SubmitOrder() {
         totalPrice += item.price
     });
 
-    const path = '/Orders/' + user.uid + "_" + uuid();
+    var uuid_ = uuid()
+    const path = '/Orders/' + user.uid + '_' + uuid_;
     var res = set(ref(db, path), {
+        order_uuid: uuid_,
         user: user.email,
         user_uid: user.uid,
         drinks: data,

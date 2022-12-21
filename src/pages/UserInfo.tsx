@@ -4,8 +4,43 @@ import { personCircleOutline, arrowForwardOutline, logOutOutline } from 'ionicon
 import { logOut } from '../firebaseConfig';
 
 import '../styles/UserInfo.css'
+import { useEffect, useState } from 'react';
+import GetOrders from '../hooks/GetOrders';
+import { get, getDatabase, ref } from 'firebase/database';
 
 const UserInfo: React.FC = () => {
+  const [orders, setorders] = useState<any>()
+
+  function GetOrderss() {
+    const user = JSON.parse(localStorage.getItem("user") || "")
+    var data: any = []
+    var filteredUserOrders: any = []
+    const db = getDatabase()
+
+    get(ref(db, '/Orders')).then((snapshot) => {
+      if (snapshot.exists()) {
+        snapshot.forEach(function (childSnapshot) {
+          var childData = childSnapshot.val();
+          data.push(childData)
+        });
+        data.map((order: any) => {
+          if (order.user_uid === user.uid) {
+            filteredUserOrders.push(order)
+          }
+        })
+        setorders(filteredUserOrders)
+      }
+      else {
+        console.warn("No data available");
+      }
+    })
+  }
+
+  useEffect(() => {
+    GetOrderss()
+  }, [])
+
+
   return (
     <IonPage>
       <IonHeader>
@@ -27,11 +62,18 @@ const UserInfo: React.FC = () => {
             <div className='finished-orders'>
               <IonLabel>Oddana naročila</IonLabel>
             </div>
-            <div className='info-container'>
-              <IonLabel className='info-container-item' color={"favorite-black"}>Naročilo št. #1234</IonLabel>
-              <div className='icon-arrow'>
-                <IonLabel className='info-container-arrow' color={"favorite-black"}><IonIcon icon={arrowForwardOutline}></IonIcon></IonLabel>
-              </div>
+            <div className='user-info-container'>
+              {orders?.map((order: any) => (
+                <>
+                  <IonLabel className='user-info-container-item' color={"favorite-black"}>{order.order_uuid}</IonLabel>
+                  <div className='user-info-container-item-arrow'>
+                    <IonLabel color={"favorite-black"}>
+                      <IonIcon icon={arrowForwardOutline}></IonIcon>
+                    </IonLabel>
+                  </div>
+                </>
+
+              ))}
             </div>
           </div>
           <div className='user-item'>

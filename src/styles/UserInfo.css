@@ -1,5 +1,4 @@
 .user-container {
-    border: 1px solid red;
     display: grid;
     grid-template-columns: auto;
     padding: 10px;
@@ -16,39 +15,36 @@
     font-size: 70px;
 }
 
-.info-container {
+.user-info-container {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 80% 20%;
     padding: 10px;
     margin: 3%;
 
     background-color: rgb(243, 242, 242);
-    border-radius: 5px 5px 5px 5px;
+    /* border-radius: 5px 5px 5px 5px; */
+    border-radius: 10px;
 }
 
-.info-container ion-label {
+.user-info-container ion-label {
     font-size: 15px;
 }
 
-.info-container-item,
-.info-container-item-last {
+.user-info-container-item,
+.user-info-container-item-arrow {
     padding: 5%;
     font-size: 30px;
     text-align: center;
 }
 
-.icon-arrow {
-    border-bottom: 1px dotted;
-    text-align: end;
+.user-info-container-item-arrow ion-icon {
+    padding-top: 10px;
+    font-size: 30px;
 }
 
-.icon-arrow ion-icon {
-    font-size: 25px;
-    padding-right: 10px;
-}
-
-.info-container-item {
-    border-bottom: 1px dotted rgba(0, 0, 0, 0);
+.user-info-container-item,
+.user-info-container-item-arrow {
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.8);
 }
 
 .finished-orders ion-label {
