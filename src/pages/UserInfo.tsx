@@ -6,12 +6,13 @@ import { logOut } from '../firebaseConfig';
 import '../styles/UserInfo.css'
 import { useEffect, useState } from 'react';
 import { get, getDatabase, ref } from 'firebase/database';
+import { userInfo } from 'os';
 
 const UserInfo: React.FC = () => {
   const [orders, setorders] = useState<any[]>([])
+  const user = JSON.parse(localStorage.getItem("user") || "")
 
   function GetOrders() {
-    const user = JSON.parse(localStorage.getItem("user") || "")
     var data: any = []
     var filteredUserOrders: any = []
     const db = getDatabase()
@@ -45,7 +46,7 @@ const UserInfo: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <BackButton path={"home"}></BackButton>
-          <IonTitle>{orders.length}</IonTitle>
+          <IonTitle>Uporabnik</IonTitle>
           <IonIcon icon={logOutOutline} size="large" style={{ paddingRight: "10px" }} slot="end" onClick={() => { logOut() }}></IonIcon>
         </IonToolbar>
       </IonHeader>
@@ -54,7 +55,7 @@ const UserInfo: React.FC = () => {
           <div className='user-item'>
             <IonIcon icon={personCircleOutline}></IonIcon>
             <div>
-              <IonText><b>Edis Sinanovic</b></IonText>
+              <IonText><b>{user.email}</b></IonText>
             </div>
           </div>
           <div className='user-item'>

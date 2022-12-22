@@ -27,6 +27,9 @@ const Home: React.FC = () => {
   const [drinks, setDrinks] = useState<any>([])
   const [selectedItem, setSelectedItem] = useState<Artikel | undefined>(undefined)
   const [isLoaded, setisLoaded] = useState(false)
+  const user = JSON.parse(localStorage.getItem("user") || "")
+  var userName = getUserName()
+
 
   const sendGetRequest = () => {
     return axios({
@@ -37,6 +40,19 @@ const Home: React.FC = () => {
       return response.data;
     })
   };
+
+  function getUserName(): string {
+    var email = user.email
+    var result = email.slice(0, email.indexOf('@'));
+    if (result.includes(".")) {
+      result = result.slice(0, result.indexOf('.'))
+    }
+
+    result = result.toLowerCase()
+    result = result.charAt(0).toUpperCase() + result.slice(1)
+
+    return result
+  }
 
   useEffect(() => {
     const dbRef = ref(getDatabase());
@@ -98,7 +114,7 @@ const Home: React.FC = () => {
               <FloatingButton slot='fixed' vertical='top' horizontal='start' edge={true} />
             </div>
             <div className='upper-item-text'>
-              <IonText color={"favorite-black"}><IonText color={"favorite-name"}><b>Edis</b></IonText>, <b>dobrodošel!</b></IonText>
+              <IonText color={"favorite-black"}><IonText color={"favorite-name"}><b>{userName}</b></IonText>, <b>dobrodošel!</b></IonText>
             </div>
           </div>
             <div className='middle'>
@@ -115,7 +131,6 @@ const Home: React.FC = () => {
                     </IonRippleEffect>
                     Dodaj
                   </IonButton>
-
                 </div>
               ))}
             </div>
@@ -134,7 +149,7 @@ const Home: React.FC = () => {
             <IonCard>
               <img src={selectedItem.image} alt="item img" />
               <IonCardHeader>
-                <IonCardSubtitle color={'light'}>{selectedItem.title}</IonCardSubtitle>
+                <IonCardSubtitle color={'favorite-white'}>{selectedItem.title}</IonCardSubtitle>
                 <IonCardTitle color={"favorite-white"}>{(selectedItem.price).toFixed(2)}€</IonCardTitle>
               </IonCardHeader>
               <IonCardContent>
