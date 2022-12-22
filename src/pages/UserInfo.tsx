@@ -7,6 +7,7 @@ import '../styles/UserInfo.css'
 import { useEffect, useState } from 'react';
 import { get, getDatabase, ref } from 'firebase/database';
 import { userInfo } from 'os';
+import { Link } from 'react-router-dom';
 
 const UserInfo: React.FC = () => {
   const [orders, setorders] = useState<any[]>([])
@@ -68,7 +69,9 @@ const UserInfo: React.FC = () => {
                   <IonLabel className='user-info-container-item' color={"favorite-black"}>{order.order_uuid}</IonLabel>
                   <div className='user-info-container-item-arrow'>
                     <IonLabel color={"favorite-black"}>
-                      <IonIcon icon={arrowForwardOutline}></IonIcon>
+                      <Link to={`/order-info/${order.order_uuid}`} color={"favorite-black"}>
+                        <IonIcon icon={arrowForwardOutline}></IonIcon>
+                      </Link>
                     </IonLabel>
                   </div>
                 </>

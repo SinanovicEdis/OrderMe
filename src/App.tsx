@@ -30,6 +30,7 @@ import UserInfo from './pages/UserInfo';
 import Cart from './pages/Cart';
 import OrderSubmited from './pages/OrderSubmited';
 import React from 'react';
+import OrderInfo from './pages/OrderInfo';
 
 setupIonicReact();
 
@@ -54,6 +55,7 @@ function App() {
           <GuardedRoute path='/user' component={UserInfo} auth={localStorage.getItem("prijavljen")} />
           <GuardedRoute path='/cart' component={Cart} auth={localStorage.getItem("prijavljen")} />
           <GuardedRoute path='/order-submited' component={OrderSubmited} auth={localStorage.getItem("prijavljen")} />
+          <GuardedRoute path='/order-info/:id' component={OrderInfo} auth={localStorage.getItem("prijavljen")} />
         </Switch>
       </IonReactRouter>
     </IonApp >

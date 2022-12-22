@@ -1,9 +1,6 @@
 import React from "react";
 import { getDatabase, ref, child, get, set, push } from "firebase/database";
 import uuid from 'react-uuid'
-interface User {
-    uid: string
-}
 
 interface Artikel {
     title: string;
@@ -23,9 +20,9 @@ function SubmitOrder() {
     const user = JSON.parse(localStorage.getItem("user") || "")
     const orderData = JSON.parse(localStorage.getItem("cart") || "")
 
-    const data: { UUID: string; Name: string; }[] = []
+    const data: { uuid: string; title: string; image: string }[] = []
     orderData.forEach((item: Artikel) => {
-        data.push({ UUID: item.uuid, Name: item.title })
+        data.push({ uuid: item.uuid, title: item.title, image: item.image })
         totalPrice += item.price
     });
 
@@ -37,6 +34,7 @@ function SubmitOrder() {
         user_uid: user.uid,
         drinks: data,
         price: totalPrice,
+        vat: (totalPrice - (totalPrice / 1.22)).toFixed(2),
         state: "ordered"
     }).then(success => {
         localStorage.removeItem("cart")
