@@ -3,7 +3,7 @@ import { IonLabel, IonContent, IonHeader, IonPage, IonAvatar, IonToolbar, IonTex
 import { closeCircle, cardOutline } from 'ionicons/icons';
 import { useEffect, useState } from 'react';
 import BackButton from '../components/BackButton';
-import '../styles/Cart.css'
+import '../styles/OrderInfo.css'
 import { useParams } from 'react-router';
 import { get, getDatabase, ref } from 'firebase/database';
 
@@ -43,7 +43,6 @@ const OrderInfo: React.FC = () => {
                     var childData = childSnapshot.val();
                     data.push(childData)
                 });
-                console.warn(data)
                 data.map((order: any) => {
                     if (order.order_uuid === param.id) {
                         filteredUserOrders.push(order)
@@ -91,15 +90,20 @@ const OrderInfo: React.FC = () => {
                             </div>
                         ))
                     ))}
+                    <div className='info-container'>
+                        <IonLabel className='info-container-item' color={"favorite-black"}>Stevilo izdelkov</IonLabel>
+                        <IonLabel className='info-container-item' color={"favorite-black"}>{itemsCount}</IonLabel>
+                        <IonLabel className='info-container-item' color={"favorite-black"}>DDV</IonLabel>
+                        <IonLabel className='info-container-item' color={"favorite-black"}>{VAT}€</IonLabel>
+                        <IonLabel className='info-container-item-last' color={"favorite-black"}><b>Skupaj</b></IonLabel>
+                        <IonLabel className='info-container-item-last' color={"favorite-black"}><b>{totalPrice}€</b></IonLabel>
+                    </div>
+
+                    <div className='buttons-container-2'>
+                        <IonButton className='buttons-container-item' color={"favorite-button-pay"} onClick={() => { window.location.assign("/invoice/" + param.id) }}><b>Račun</b></IonButton>
+                    </div>
                 </div>
-                <div className='info-container'>
-                    <IonLabel className='info-container-item' color={"favorite-black"}>Stevilo izdelkov</IonLabel>
-                    <IonLabel className='info-container-item' color={"favorite-black"}>{itemsCount}</IonLabel>
-                    <IonLabel className='info-container-item' color={"favorite-black"}>DDV</IonLabel>
-                    <IonLabel className='info-container-item' color={"favorite-black"}>{VAT}€</IonLabel>
-                    <IonLabel className='info-container-item-last' color={"favorite-black"}><b>Skupaj</b></IonLabel>
-                    <IonLabel className='info-container-item-last' color={"favorite-black"}><b>{totalPrice}€</b></IonLabel>
-                </div>
+
             </IonContent>
         </IonPage >
     )

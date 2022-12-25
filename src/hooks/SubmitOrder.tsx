@@ -20,9 +20,9 @@ function SubmitOrder() {
     const user = JSON.parse(localStorage.getItem("user") || "")
     const orderData = JSON.parse(localStorage.getItem("cart") || "")
 
-    const data: { uuid: string; title: string; image: string }[] = []
+    const data: { uuid: string; title: string; image: string, price: number }[] = []
     orderData.forEach((item: Artikel) => {
-        data.push({ uuid: item.uuid, title: item.title, image: item.image })
+        data.push({ uuid: item.uuid, title: item.title, image: item.image, price: item.price })
         totalPrice += item.price
     });
 
