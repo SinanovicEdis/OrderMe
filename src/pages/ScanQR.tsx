@@ -6,6 +6,8 @@ import BackButton from "../components/BackButton";
 const ScanQR: React.FC = () => {
 
     function onHomePage() {
+        localStorage.setItem("database", "https://orderme-c0395-default-rtdb.europe-west1.firebasedatabase.app")
+        // localStorage.removeItem("database")
         window.location.assign("home")
     }
 

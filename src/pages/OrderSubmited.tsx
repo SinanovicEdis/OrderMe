@@ -14,7 +14,7 @@ const OrderSubmited: React.FC = () => {
             <IonContent>
                 <div className='order-container' style={{ backgroundColor: "white" }}>
                     <div className='order-item'>
-                        <Lottie animationData={DoneAnimation} loop={false} />
+                        <Lottie animationData={DoneAnimation} loop={false} height={"100%"} />
                     </div>
                     <div className='order-item' style={{ backgroundColor: "#E3D0BC" }}>
                         <div className='order-item-text'>

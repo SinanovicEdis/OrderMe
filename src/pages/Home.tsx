@@ -55,21 +55,25 @@ const Home: React.FC = () => {
   }
 
   useEffect(() => {
-    const dbRef = ref(getDatabase());
-    if (drinks.length === 0) {
-      get(child(dbRef, '/Drinks')).then((snapshot) => {
-        if (snapshot.exists()) {
-          var arr = snapshot.val()
-          setDrinks(arr)
-        }
-        else {
-          console.log("No data available");
-        }
-      }).catch((error) => {
-        console.warn(error.message);
-      });
+    try {
+      const dbRef = ref(getDatabase());
+      if (drinks.length === 0) {
+        get(child(dbRef, '/Drinks')).then((snapshot) => {
+          if (snapshot.exists()) {
+            var arr = snapshot.val()
+            setDrinks(arr)
+          }
+          else {
+            console.log("No data available");
+          }
+        }).catch((error) => {
+          console.warn(error.message);
+        });
+      }
+      setisLoaded(true)
+    } catch (e) {
+      console.log('Error')
     }
-    setisLoaded(true)
   }, [])
 
   function addArticleToCart(uid_: string) {

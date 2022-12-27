@@ -4,17 +4,12 @@ import { browserPopupRedirectResolver, browserSessionPersistence, FacebookAuthPr
 import * as firebase from "firebase/auth"
 import { indexedDBLocalPersistence, initializeAuth } from 'firebase/auth';
 import { Capacitor, ExceptionCode } from '@capacitor/core';
-import { useState } from "react";
-import App from "./App";
-import getUserState from './App'
-import { userInfo } from "os";
-import UserInfo from "./pages/UserInfo";
-
 
 const firebaseConfig = {
     apiKey: "AIzaSyDZ2SsfwRIAyo4zsz-tOTRdiFz0LCvFY-A",
     authDomain: "orderme-c0395.firebaseapp.com",
-    databaseURL: "https://orderme-c0395-default-rtdb.europe-west1.firebasedatabase.app",
+    // databaseURL: "https://orderme-c0395-default-rtdb.europe-west1.firebasedatabase.app",
+    databaseURL: localStorage.getItem("database") || "",
     projectId: "orderme-c0395",
     storageBucket: "orderme-c0395.appspot.com",
     messagingSenderId: "615841800678",
