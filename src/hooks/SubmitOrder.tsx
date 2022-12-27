@@ -20,6 +20,8 @@ function SubmitOrder() {
     const user = JSON.parse(localStorage.getItem("user") || "")
     const orderData = JSON.parse(localStorage.getItem("cart") || "")
 
+    const date = new Date();
+
     const data: { uuid: string; title: string; image: string, price: number }[] = []
     orderData.forEach((item: Artikel) => {
         data.push({ uuid: item.uuid, title: item.title, image: item.image, price: item.price })
@@ -35,6 +37,7 @@ function SubmitOrder() {
         drinks: data,
         price: totalPrice,
         vat: (totalPrice - (totalPrice / 1.22)).toFixed(2),
+        date: date.toLocaleString(),
         state: "ordered"
     }).then(success => {
         localStorage.removeItem("cart")

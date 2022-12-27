@@ -66,7 +66,7 @@ const UserInfo: React.FC = () => {
             <div className='user-info-container'>
               {orders?.map((order: any) => (
                 <>
-                  <IonLabel className='user-info-container-item' color={"favorite-black"}>{order.order_uuid}</IonLabel>
+                  <IonLabel className='user-info-container-item' color={"favorite-black"}>{order.date}</IonLabel>
                   <div className='user-info-container-item-arrow'>
                     <IonLabel color={"favorite-black"}>
                       <Link to={`/order-info/${order.order_uuid}`} color={"favorite-black"}>

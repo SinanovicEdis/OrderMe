@@ -6,8 +6,6 @@ import BackButton from "../components/BackButton";
 import '../styles/Invoice.css'
 import QRCode from "react-qr-code";
 
-
-
 interface Order {
     drinks: []
     order_uuid: string
@@ -15,6 +13,9 @@ interface Order {
     state: string
     user: string
     user_uuid: string
+}
+
+function generatePDF() {
 }
 
 const Invoice: React.FC = () => {
@@ -42,10 +43,6 @@ const Invoice: React.FC = () => {
                 console.warn("No data available");
             }
         })
-    }
-
-    function generatePDF() {
-        let content = document.getElementById('pdf-area')?.innerHTML
     }
 
     useEffect(() => {

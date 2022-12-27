@@ -1,5 +1,4 @@
 .order-container {
-    border: 1px solid rgba(0, 0, 0, 0.8);
     display: grid;
     grid-template-columns: auto;
     padding: 10px;
@@ -10,7 +9,6 @@
     padding: 20px;
     font-size: 30px;
     text-align: center;
-    height: auto;
 }
 
 .order-item-text {

@@ -73,7 +73,8 @@
   },
   "devDependencies": {
     "@capacitor/cli": "4.5.0",
-    "@ionic/cli": "6.20.4"
+    "@ionic/cli": "6.20.4",
+    "@types/react-native-html-to-pdf": "^0.8.1"
   },
   "description": "An Ionic project"
 }
