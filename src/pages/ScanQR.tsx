@@ -3,11 +3,28 @@ import { IonButton, IonContent, IonHeader, IonIcon, IonImg, IonLabel, IonPage, I
 import scanIcon from '../assets/icons/scan-sharp.svg'
 import "../styles/ScanQR.css"
 import BackButton from "../components/BackButton";
+import { BarcodeScanner } from "@ionic-native/barcode-scanner";
+import { child, Database, get, getDatabase, ref } from "firebase/database";
+import { changeDB } from "../firebaseConfig";
+
 const ScanQR: React.FC = () => {
 
-    function onHomePage() {
-        localStorage.setItem("database", "https://orderme-c0395-default-rtdb.europe-west1.firebasedatabase.app")
-        // localStorage.removeItem("database")
+    async function scanQRcode() {
+        const data = await BarcodeScanner.scan();
+        // alert(JSON.stringify(data));
+        localStorage.removeItem("database")
+        localStorage.setItem("database", data.text)
+
+        window.location.assign("home")
+    }
+
+    function changeDb(): void {
+        if (localStorage.getItem("database")) {
+            localStorage.removeItem("database")
+        } else {
+            localStorage.setItem("database", "https://orderme-c0395-default-rtdb.europe-west1.firebasedatabase.app")
+        }
+
         window.location.assign("home")
     }
 
@@ -32,13 +49,16 @@ const ScanQR: React.FC = () => {
                 </div>
 
                 <div className="div-button" style={{ backgroundColor: "", height: "20%" }}>
-                    <IonButton color={"favorite-green"} className="scan-btn" onClick={() => onHomePage()}>
+                    <IonButton color={"favorite-green"} className="scan-btn" onClick={() => scanQRcode()}>
                         <IonIcon color="favorite-white" src={scanIcon}></IonIcon>
                         &nbsp; Scan QR code</IonButton>
                 </div>
+                <IonButton onClick={() => changeDb()}>change db</IonButton>
             </IonContent>
         </IonPage >
     )
 }
 
 export default ScanQR
+
+

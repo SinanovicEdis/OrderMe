@@ -1,6 +1,7 @@
 import React from "react";
 import { getDatabase, ref, child, get, set, push } from "firebase/database";
 import uuid from 'react-uuid'
+import axios from 'axios'
 
 interface Artikel {
     title: string;
@@ -13,7 +14,6 @@ interface Artikel {
 }
 
 function SubmitOrder() {
-    const db = getDatabase()
 
     var totalPrice = 0
 
@@ -29,8 +29,9 @@ function SubmitOrder() {
     });
 
     var uuid_ = uuid()
-    const path = '/Orders/' + user.uid + '_' + uuid_;
-    var res = set(ref(db, path), {
+    const path = user.uid + '_' + uuid_;
+
+    axios.put("https://orderme-c0395-default-rtdb.europe-west1.firebasedatabase.app/Orders/" + path + "/.json/" + "?auth=" + user.stsTokenManager.accessToken, {
         order_uuid: uuid_,
         user: user.email,
         user_uid: user.uid,

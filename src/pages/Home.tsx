@@ -1,4 +1,4 @@
-import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonImg, IonLabel, IonFabList, IonItem } from '@ionic/react';
+import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonImg, IonLabel, useIonAlert, IonItem } from '@ionic/react';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonSpinner, IonIcon } from '@ionic/react';
 import FloatingButton from '../components/FloatingButton';
 import SearchBar from '../components/SearchBar';
@@ -29,14 +29,16 @@ const Home: React.FC = () => {
   const [isLoaded, setisLoaded] = useState(false)
   const user = JSON.parse(localStorage.getItem("user") || "")
   var userName = getUserName()
-
+  const [presentAlert] = useIonAlert();
 
   const sendGetRequest = () => {
     return axios({
-      url: "https://api.sampleapis.com/coffee/hot",
+      url: "https://orderme-c0395-default-rtdb.europe-west1.firebasedatabase.app/Drinks.json/?auth=" + user.stsTokenManager.accessToken,
       method: 'get'
     }).then(response => {
-      console.log(response);
+      // console.log(response);
+      setDrinks(response.data)
+      setisLoaded(true)
       return response.data;
     })
   };
@@ -56,7 +58,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     try {
-      const dbRef = ref(getDatabase());
+      var dbRef = ref(getDatabase());
       if (drinks.length === 0) {
         get(child(dbRef, '/Drinks')).then((snapshot) => {
           if (snapshot.exists()) {
@@ -72,7 +74,12 @@ const Home: React.FC = () => {
       }
       setisLoaded(true)
     } catch (e) {
-      console.log('Error')
+      presentAlert({
+        header: 'Napaka!',
+        message: 'Prosim preverite pravilnost poskenirane QR kode',
+        buttons: ['OK'],
+      })
+      setisLoaded(true)
     }
   }, [])
 

@@ -1,24 +1,23 @@
-import { initializeApp } from "firebase/app";
+import { getApp, initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { browserPopupRedirectResolver, browserSessionPersistence, FacebookAuthProvider, getAuth, GoogleAuthProvider, reload, signInWithPopup, signInWithRedirect, signOut, User } from "firebase/auth"
 import * as firebase from "firebase/auth"
 import { indexedDBLocalPersistence, initializeAuth } from 'firebase/auth';
 import { Capacitor, ExceptionCode } from '@capacitor/core';
+import { getDatabase } from "firebase/database";
 
-const firebaseConfig = {
+
+// Initialize Firebase
+let app = initializeApp({
     apiKey: "AIzaSyDZ2SsfwRIAyo4zsz-tOTRdiFz0LCvFY-A",
     authDomain: "orderme-c0395.firebaseapp.com",
-    // databaseURL: "https://orderme-c0395-default-rtdb.europe-west1.firebasedatabase.app",
-    databaseURL: localStorage.getItem("database") || "",
     projectId: "orderme-c0395",
     storageBucket: "orderme-c0395.appspot.com",
     messagingSenderId: "615841800678",
     appId: "1:615841800678:web:e458abc0f260cd4043f627",
-    measurementId: "G-M87NZ4FX4C"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+    measurementId: "G-M87NZ4FX4C",
+    databaseURL: localStorage.getItem("database") || ""
+});
 const analytics = getAnalytics(app);
 if (Capacitor.isNativePlatform()) {
     initializeAuth(app, {
@@ -52,6 +51,21 @@ export async function loginUser(email: string, password: string) {
 
         return false
     }
+}
+
+export async function changeDB(url: string) {
+    var conf = {
+        apiKey: "AIzaSyDZ2SsfwRIAyo4zsz-tOTRdiFz0LCvFY-A",
+        authDomain: "orderme-c0395.firebaseapp.com",
+        databaseURL: url,
+        projectId: "orderme-c0395",
+        storageBucket: "orderme-c0395.appspot.com",
+        messagingSenderId: "615841800678",
+        appId: "1:615841800678:web:e458abc0f260cd4043f627",
+        measurementId: "G-M87NZ4FX4C"
+    };
+
+    app = initializeApp(conf)
 }
 
 export async function loginWithGoogle() {
