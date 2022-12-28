@@ -77,7 +77,13 @@ const Home: React.FC = () => {
       presentAlert({
         header: 'Napaka!',
         message: 'Prosim preverite pravilnost poskenirane QR kode',
-        buttons: ['OK'],
+        buttons: [{
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {
+            window.location.assign("scan")
+          },
+        }],
       })
       setisLoaded(true)
     }
