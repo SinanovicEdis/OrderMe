@@ -96,7 +96,7 @@ const OrderInfo: React.FC = () => {
                         <IonLabel className='info-container-item' color={"favorite-black"}>DDV</IonLabel>
                         <IonLabel className='info-container-item' color={"favorite-black"}>{VAT}€</IonLabel>
                         <IonLabel className='info-container-item-last' color={"favorite-black"}><b>Skupaj</b></IonLabel>
-                        <IonLabel className='info-container-item-last' color={"favorite-black"}><b>{totalPrice}€</b></IonLabel>
+                        <IonLabel className='info-container-item-last' color={"favorite-black"}><b>{totalPrice.toFixed(2)}€</b></IonLabel>
                     </div>
 
                     <div className='buttons-container-2'>
