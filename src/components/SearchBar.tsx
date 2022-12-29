@@ -3,6 +3,8 @@ import { IonItem, IonList, IonSearchbar, IonContent } from '@ionic/react';
 import { child, get, getDatabase, ref } from 'firebase/database';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonLabel, IonIcon, IonBadge } from '@ionic/react';
 import { addCircleOutline, heartOutline } from 'ionicons/icons';
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
+
 interface Artikel {
     title: string;
     quantity: number
@@ -57,7 +59,13 @@ const SearchBar = () => {
         else {
             localStorage.setItem("cart", JSON.stringify(article))
         }
+
+        hapticsImpact()
     }
+
+    const hapticsImpact = async () => {
+        await Haptics.impact({ style: ImpactStyle.Heavy });
+    };
 
     const handleChange = (ev: Event) => {
         let query = "";

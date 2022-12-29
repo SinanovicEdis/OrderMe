@@ -1,10 +1,9 @@
-import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonImg, IonLabel, useIonAlert, IonItem } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonImg, IonLabel, useIonAlert, IonItem } from '@ionic/react';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonSpinner, IonIcon, IonBadge } from '@ionic/react';
 import { IonSegment, IonSegmentButton } from '@ionic/react';
 
 import FloatingButton from '../components/FloatingButton';
 import SearchBar from '../components/SearchBar';
-import SegmentFilter from '../components/SegmentFilter';
 import { addCircleOutline, heartOutline } from 'ionicons/icons';
 
 import { getDatabase, ref, child, get } from "firebase/database";
@@ -14,6 +13,7 @@ import axios from 'axios'
 import '../styles/Home.css'
 import '../styles/Menu.css'
 import { useContext, useEffect, useState } from 'react';
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 
 interface Artikel {
@@ -105,7 +105,13 @@ const Home: React.FC = () => {
     else {
       localStorage.setItem("cart", JSON.stringify(article))
     }
+
+    hapticsImpact()
   }
+
+  const hapticsImpact = async () => {
+    await Haptics.impact({ style: ImpactStyle.Heavy });
+  };
 
   function addArticleToFavorite(id: number) {
     const article = drinks.filter((e: any) => e.id === id)
@@ -179,11 +185,11 @@ const Home: React.FC = () => {
                     <IonText color={"favorite-black"}>{drink.title}</IonText>
                     <IonImg className='menu-item' src={drink.image} alt='' onClick={() => { setSelectedItem(drink); }} />
 
-                    <IonButton onClick={() => addArticleToCart(drink.uuid)} className='menu-btn' color={"favorite-button"}>
+                    <div className="ion-activatable ripple-parent rounded-rectangle" onClick={() => addArticleToCart(drink.uuid)}>
+                      Dodaj
                       <IonRippleEffect>
                       </IonRippleEffect>
-                      Dodaj
-                    </IonButton>
+                    </div>
                   </div>
                 ))}
               {filter &&
@@ -193,11 +199,11 @@ const Home: React.FC = () => {
                       <IonText color={"favorite-black"}>{drink.title}</IonText>
                       <IonImg className='menu-item' src={drink.image} alt='' onClick={() => { setSelectedItem(drink); }} />
 
-                      <IonButton onClick={() => addArticleToCart(drink.uuid)} className='menu-btn' color={"favorite-button"}>
+                      <div className="ion-activatable ripple-parent rounded-rectangle" onClick={() => addArticleToCart(drink.uuid)}>
+                        Dodaj
                         <IonRippleEffect>
                         </IonRippleEffect>
-                        Dodaj
-                      </IonButton>
+                      </div>
                     </div>
                     : <></>
                 ))}
