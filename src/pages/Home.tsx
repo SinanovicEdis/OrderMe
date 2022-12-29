@@ -1,5 +1,7 @@
 import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonImg, IonLabel, useIonAlert, IonItem } from '@ionic/react';
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonSpinner, IonIcon } from '@ionic/react';
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonSpinner, IonIcon, IonBadge } from '@ionic/react';
+import { IonSegment, IonSegmentButton } from '@ionic/react';
+
 import FloatingButton from '../components/FloatingButton';
 import SearchBar from '../components/SearchBar';
 import SegmentFilter from '../components/SegmentFilter';
@@ -11,10 +13,12 @@ import axios from 'axios'
 
 import '../styles/Home.css'
 import '../styles/Menu.css'
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+
 
 interface Artikel {
   title: string;
+  quantity: number
   description: string;
   ingredients: Array<string>;
   image: string;
@@ -27,6 +31,8 @@ const Home: React.FC = () => {
   const [drinks, setDrinks] = useState<any>([])
   const [selectedItem, setSelectedItem] = useState<Artikel | undefined>(undefined)
   const [isLoaded, setisLoaded] = useState(false)
+  const [filter, setfilter] = useState<any>()
+  const [selectedSegment, setSelectedSegment] = useState<any>("")
   const user = JSON.parse(localStorage.getItem("user") || "")
   var userName = getUserName()
   const [presentAlert] = useIonAlert();
@@ -66,10 +72,10 @@ const Home: React.FC = () => {
             setDrinks(arr)
           }
           else {
-            console.log("No data available");
+            alert("No data available");
           }
         }).catch((error) => {
-          console.warn(error.message);
+          alert(error.message);
         });
       }
       setisLoaded(true)
@@ -113,6 +119,21 @@ const Home: React.FC = () => {
     }
   }
 
+  function selectFilter(name: string) {
+    if (filter === null) {
+      setfilter(name)
+      setSelectedSegment(name)
+    }
+    else if (filter === name) {
+      setfilter(null)
+      setSelectedSegment(null)
+    }
+    else {
+      setfilter(name)
+      setSelectedSegment(name)
+    }
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -136,20 +157,50 @@ const Home: React.FC = () => {
           </div>
             <div className='middle'>
               <SearchBar />
-              <SegmentFilter />
-            </div><div className='menu'>
-              {drinks?.map((drink: any) => (
-                <div className='menu2'>
-                  <IonText color={"favorite-black"}>{drink.title}</IonText>
-                  <IonImg className='menu-item' src={drink.image} alt='' onClick={() => { setSelectedItem(drink); }} />
 
-                  <IonButton onClick={() => addArticleToCart(drink.uuid)} className='menu-btn' color={"favorite-button"}>
-                    <IonRippleEffect>
-                    </IonRippleEffect>
-                    Dodaj
-                  </IonButton>
-                </div>
-              ))}
+              <IonSegment value={selectedSegment} color={"primary"}>
+                <IonSegmentButton value="coffee" onClick={() => { selectFilter("coffee") }}>
+                  <IonLabel>Kave</IonLabel>
+                </IonSegmentButton>
+                <IonSegmentButton value="non-alcoholic" onClick={() => { selectFilter("non-alcoholic") }}>
+                  <IonLabel>Brez alk. pijače</IonLabel>
+                </IonSegmentButton>
+                <IonSegmentButton value="wine" onClick={() => { selectFilter("wine") }}>
+                  <IonLabel>Vina</IonLabel>
+                </IonSegmentButton>
+                <IonSegmentButton value="tea" onClick={() => { selectFilter("tea") }}>
+                  <IonLabel>Čaji</IonLabel>
+                </IonSegmentButton>
+              </IonSegment>
+            </div><div className='menu'>
+              {!filter &&
+                drinks?.map((drink: any) => (
+                  < div className='menu2' >
+                    <IonText color={"favorite-black"}>{drink.title}</IonText>
+                    <IonImg className='menu-item' src={drink.image} alt='' onClick={() => { setSelectedItem(drink); }} />
+
+                    <IonButton onClick={() => addArticleToCart(drink.uuid)} className='menu-btn' color={"favorite-button"}>
+                      <IonRippleEffect>
+                      </IonRippleEffect>
+                      Dodaj
+                    </IonButton>
+                  </div>
+                ))}
+              {filter &&
+                drinks?.map((drink: any) => (
+                  drink.category === filter ?
+                    < div className='menu2' >
+                      <IonText color={"favorite-black"}>{drink.title}</IonText>
+                      <IonImg className='menu-item' src={drink.image} alt='' onClick={() => { setSelectedItem(drink); }} />
+
+                      <IonButton onClick={() => addArticleToCart(drink.uuid)} className='menu-btn' color={"favorite-button"}>
+                        <IonRippleEffect>
+                        </IonRippleEffect>
+                        Dodaj
+                      </IonButton>
+                    </div>
+                    : <></>
+                ))}
             </div>
           </>
         }
