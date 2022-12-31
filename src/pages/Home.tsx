@@ -15,7 +15,6 @@ import '../styles/Menu.css'
 import { useContext, useEffect, useState } from 'react';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
-
 interface Artikel {
   title: string;
   quantity: number
@@ -186,7 +185,7 @@ const Home: React.FC = () => {
                     <IonImg className='menu-item' src={drink.image} alt='' onClick={() => { setSelectedItem(drink); }} />
 
                     <div className="ion-activatable ripple-parent rounded-rectangle" onClick={() => addArticleToCart(drink.uuid)}>
-                      Dodaj
+                      <p style={{ color: "white" }}>Dodaj</p>
                       <IonRippleEffect>
                       </IonRippleEffect>
                     </div>
@@ -242,4 +241,8 @@ const Home: React.FC = () => {
 };
 
 export default Home;
+
+
+
+
 
