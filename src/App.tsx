@@ -33,6 +33,7 @@ import React from 'react';
 import OrderInfo from './pages/OrderInfo';
 import Invoice from './pages/Invoice';
 import QRcodeScan from './pages/QRcodeScan';
+import CardPayment from './pages/CardPayment';
 
 setupIonicReact();
 
@@ -57,6 +58,7 @@ function App() {
           <GuardedRoute path='/QRcodeScan' component={QRcodeScan} auth={localStorage.getItem("prijavljen")} />
           <GuardedRoute path='/user' component={UserInfo} auth={localStorage.getItem("prijavljen")} />
           <GuardedRoute path='/cart' component={Cart} auth={localStorage.getItem("prijavljen")} />
+          <GuardedRoute path='/card-payment' component={CardPayment} auth={localStorage.getItem("prijavljen")} />
           <GuardedRoute path='/order-submited' component={OrderSubmited} auth={localStorage.getItem("prijavljen")} />
           <GuardedRoute path='/order-info/:id' component={OrderInfo} auth={localStorage.getItem("prijavljen")} />
           <GuardedRoute path='/invoice/:id' component={Invoice} auth={localStorage.getItem("prijavljen")} />
