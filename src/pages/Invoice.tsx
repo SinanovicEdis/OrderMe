@@ -13,6 +13,8 @@ interface Order {
     state: string
     user: string
     user_uuid: string
+    date: String
+    vat: String
 }
 
 function generatePDF() {
@@ -71,7 +73,7 @@ const Invoice: React.FC = () => {
 
                     <div className="header-item-info">
                         <p><b>RAČUN ŠT {param.id}</b></p>
-                        <p>Maribor, 11.11.2022 Ura: 12:47</p>
+                        <p>{order?.date}</p>
                     </div>
 
                     <div className="invoice-order-container">
@@ -124,10 +126,6 @@ const Invoice: React.FC = () => {
                             value={""}
                         />
                     </div>
-                </div>
-
-                <div className='buttons-container-2'>
-                    <IonButton className='buttons-container-item' color={"favorite-button-pay"} onClick={() => { generatePDF() }}><b>&nbsp; PDF &nbsp;</b></IonButton>
                 </div>
             </IonContent>
         </IonPage >

@@ -199,7 +199,7 @@ const Home: React.FC = () => {
                       <IonImg className='menu-item' src={drink.image} alt='' onClick={() => { setSelectedItem(drink); }} />
 
                       <div className="ion-activatable ripple-parent rounded-rectangle" onClick={() => addArticleToCart(drink.uuid)}>
-                        Dodaj
+                        <p style={{ color: "white" }}>Dodaj</p>
                         <IonRippleEffect>
                         </IonRippleEffect>
                       </div>
