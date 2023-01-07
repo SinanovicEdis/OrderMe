@@ -64,7 +64,7 @@ const UserInfo: React.FC = () => {
               <IonLabel>Oddana naročila</IonLabel>
             </div>
             <div className='user-info-container'>
-              {orders?.map((order: any) => (
+              {orders.length !== 0 ? orders?.map((order: any) => (
                 <>
                   <IonLabel className='user-info-container-item' color={"favorite-black"}>{order.date}</IonLabel>
                   <div className='user-info-container-item-arrow'>
@@ -75,8 +75,9 @@ const UserInfo: React.FC = () => {
                     </IonLabel>
                   </div>
                 </>
-
-              ))}
+              ))
+                : <></>
+              }
             </div>
           </div>
           <div className='user-item'>
