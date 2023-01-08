@@ -19,6 +19,7 @@ interface Order {
     state: string
     user: string
     user_uuid: string
+    payed: Boolean
 }
 
 const OrderInfo: React.FC = () => {
@@ -30,6 +31,7 @@ const OrderInfo: React.FC = () => {
     var param = JSON.parse(JSON.stringify(data))
     const [orders, setOrders] = useState<Order[]>([])
     const [drinks, setDrinks] = useState<Artikel[]>([])
+    var payed: Boolean = false
 
     function GetOrders() {
         var data: any = []
@@ -78,6 +80,7 @@ const OrderInfo: React.FC = () => {
                         itemsCount = 0,
                         totalPrice = 0,
                         VAT = 0,
+                        payed = item.payed,
                         item.drinks.map((item2: any) => (
                             itemsCount++,
                             totalPrice = item.price,
@@ -95,6 +98,8 @@ const OrderInfo: React.FC = () => {
                         <IonLabel className='info-container-item' color={"favorite-black"}>{itemsCount}</IonLabel>
                         <IonLabel className='info-container-item' color={"favorite-black"}>DDV</IonLabel>
                         <IonLabel className='info-container-item' color={"favorite-black"}>{VAT}€</IonLabel>
+                        <IonLabel className='info-container-item' color={"favorite-black"}>Plačano</IonLabel>
+                        <IonLabel className='info-container-item' color={"favorite-black"}>{payed.toString() === "true" ? "Da" : "Ne"}</IonLabel>
                         <IonLabel className='info-container-item-last' color={"favorite-black"}><b>Skupaj</b></IonLabel>
                         <IonLabel className='info-container-item-last' color={"favorite-black"}><b>{totalPrice.toFixed(2)}€</b></IonLabel>
                     </div>

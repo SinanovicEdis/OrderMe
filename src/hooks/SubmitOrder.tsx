@@ -13,7 +13,7 @@ interface Artikel {
     price: number
 }
 
-function SubmitOrder() {
+function SubmitOrder(payed: Boolean) {
 
     var totalPrice = 0
 
@@ -39,7 +39,8 @@ function SubmitOrder() {
         price: totalPrice,
         vat: (totalPrice - (totalPrice / 1.22)).toFixed(2),
         date: date.toLocaleString(),
-        state: "ordered"
+        state: "ordered",
+        payed: payed
     }).then(success => {
         localStorage.removeItem("cart")
         window.location.assign("order-submited")

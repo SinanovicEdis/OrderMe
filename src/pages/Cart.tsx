@@ -51,7 +51,7 @@ const Cart: React.FC = () => {
 
                         <div className='buttons-container'>
                             <IonButton color={"favorite-button-pay"} onClick={() => { window.location.assign("/card-payment") }}><b>Oddaj naročilo in plačaj</b> &nbsp; &nbsp; <IonIcon icon={cardOutline}></IonIcon></IonButton>
-                            <IonButton color={"favorite-button-pay"} onClick={() => { SubmitOrder() }}><b>Oddaj naročilo</b></IonButton>
+                            <IonButton color={"favorite-button-pay"} onClick={() => { SubmitOrder(false) }}><b>Oddaj naročilo</b></IonButton>
                         </div>
                     </>
                     : <>

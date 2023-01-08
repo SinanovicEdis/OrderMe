@@ -214,7 +214,7 @@ const CardPayment: React.FC = () => {
                     </div>
                 </div>
                 <div className='buttons-container'>
-                    <IonButton color={"favorite-button-pay"} onClick={() => { SubmitOrder() }}><b>Oddaj naročilo in plačaj</b> &nbsp; &nbsp; <IonIcon icon={cardOutline}></IonIcon></IonButton>
+                    <IonButton color={"favorite-button-pay"} onClick={() => { SubmitOrder(true) }}><b>Oddaj naročilo in plačaj</b> &nbsp; &nbsp; <IonIcon icon={cardOutline}></IonIcon></IonButton>
                 </div>
             </IonContent>
         </IonPage>
