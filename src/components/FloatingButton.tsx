@@ -1,6 +1,6 @@
 import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFab, IonFabButton, IonIcon, IonFabList } from '@ionic/react';
-import { scan, home, cart, person, heart, arrowDownCircle } from 'ionicons/icons';
-
+import { scan, home, cart, person, logOut, arrowDownCircle } from 'ionicons/icons';
+import { logOut as logout } from '../firebaseConfig'
 interface IPositionProps {
     slot: string,
     vertical: "top" | "bottom" | "center" | undefined,
@@ -29,7 +29,7 @@ const FloatingButton = (props: IPositionProps) => {
                         <IonIcon icon={person}></IonIcon>
                     </IonFabButton>
                     <IonFabButton>
-                        <IonIcon icon={heart}></IonIcon>
+                        <IonIcon icon={logOut} onClick={() => logout()}></IonIcon>
                     </IonFabButton>
                 </IonFabList>
             </IonFab>
