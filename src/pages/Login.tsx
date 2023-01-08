@@ -36,31 +36,6 @@ const Login: React.FC = () => {
         }
     }
 
-
-    // async function loginGoogleNative() {
-    //     try {
-    //         let googleUser = await GoogleAuth.signIn()
-    //         setUser(googleUser)
-    //         localStorage.setItem("googleUser", JSON.stringify(googleUser))
-    //         window.location.assign('/home')
-    //         // var auth = GoogleAuth.initialize()
-    //         // const credential = auth.GoogleAuthProvider.credential(googleUser.authentication.idToken);
-    //         // return this.afAuth.auth.signInAndRetrieveDataWithCredential(credential);
-    //     }
-    //     catch (error) {
-    //         console.warn(error)
-    //     }
-
-    //     // const credential = auth.GoogleAuthProvider.credential(googleUser.authentication.idToken);
-    //     // return this.afAuth.auth.signInAndRetrieveDataWithCredential(credential);
-    // }
-
-    // async function logOutNative() {
-    //     await GoogleAuth.signOut()
-    // }
-
-
-
     return (
         <IonPage>
             <IonHeader>
@@ -82,11 +57,11 @@ const Login: React.FC = () => {
 
                         <p style={{ padding: "2px" }}></p>
                         <div className='userText'>
-                            <IonText color={"favorite-white"}>Password</IonText>
+                            <IonText color={"favorite-white"}>Geslo</IonText>
                         </div>
-                        <IonInput className='userInput' color={"favorite-black"} placeholder='  Password' type='password' onIonChange={(e: any) => setPassword(e.target.value)}></IonInput>
+                        <IonInput className='userInput' color={"favorite-black"} placeholder='  Geslo' type='password' onIonChange={(e: any) => setPassword(e.target.value)}></IonInput>
                         <IonCardContent class='login-card-buttons'>
-                            <IonButton onClick={() => loginUsr()}>Login</IonButton>
+                            <IonButton onClick={() => loginUsr()}>Prijava</IonButton>
                             <IonText><a className='create-account-link' href='/registration' style={{ color: "white" }}>Nimaš računa? Ustvari ga!</a></IonText>
                         </IonCardContent>
 

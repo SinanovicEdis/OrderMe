@@ -1,4 +1,4 @@
-import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFab, IonFabButton, IonIcon, IonFabList } from '@ionic/react';
+import { IonContent, IonFab, IonFabButton, IonIcon, IonFabList } from '@ionic/react';
 import { scan, home, cart, person, logOut, arrowDownCircle } from 'ionicons/icons';
 import { logOut as logout } from '../firebaseConfig'
 interface IPositionProps {

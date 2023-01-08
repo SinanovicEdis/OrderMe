@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonPage, IonInput, IonButton, IonText, useIonAlert, IonHeader, IonToolbar, isPlatform, IonRouterLink, IonNavLink, IonLabel, IonItem, IonImg, IonTitle } from '@ionic/react';
 import BackButton from '../components/BackButton';
 import { registerUser } from '../firebaseConfig'
-import '../styles/Login.css'
+import '../styles/Registration.css'
 
 const Registration: React.FC = () => {
     const [username, setUsername] = useState("")
@@ -49,21 +49,23 @@ const Registration: React.FC = () => {
                         <IonCardTitle color={"favorite-white"}>Ustvari račun</IonCardTitle>
                     </IonCardHeader>
                     <IonCardContent>
-                        <IonText className='userText' color={"favorite-white"}>Email</IonText>
-                        <IonInput className='userInput' color={"favorite-black"} placeholder='  Username (email)' type='email' onIonChange={(e: any) => setUsername(e.target.value)}></IonInput>
+                        <div className='inputGroup'>
+                            <IonText className='userText' color={"favorite-white"}>Email</IonText>
+                            <IonInput className='userInput' color={"favorite-black"} placeholder='  Elektronski naslov' type='email' onIonChange={(e: any) => setUsername(e.target.value)}></IonInput>
 
-                        <p style={{ padding: "2px" }}></p>
+                            <p style={{ padding: "2px" }}></p>
 
-                        <IonText className='userText' color={"favorite-white"}>Password</IonText>
-                        <IonInput className='userInput' color={"favorite-black"} placeholder='  Password' type='password' onIonChange={(e: any) => setPassword(e.target.value)}></IonInput>
+                            <IonText className='userText' color={"favorite-white"}>Geslo</IonText>
+                            <IonInput className='userInput' color={"favorite-black"} placeholder='  Geslo' type='password' onIonChange={(e: any) => setPassword(e.target.value)}></IonInput>
 
-                        <p style={{ padding: "2px" }}></p>
+                            <p style={{ padding: "2px" }}></p>
 
-                        <IonText className='userText' color={"favorite-white"}>Password</IonText>
-                        <IonInput className='userInput' color={"favorite-black"} placeholder='  Confrim Password' type='password' onIonChange={(e: any) => setConfirmPassword(e.target.value)}></IonInput>
-                        <IonCardContent class='login-card-buttons'>
-                            <IonButton onClick={() => createAccount()}>Ustvari račun</IonButton>
-                        </IonCardContent>
+                            <IonText className='userText' color={"favorite-white"}>Geslo</IonText>
+                            <IonInput className='userInput' color={"favorite-black"} placeholder='  Potrdi geslo' type='password' onIonChange={(e: any) => setConfirmPassword(e.target.value)}></IonInput>
+                            <IonCardContent class='login-card-buttons'>
+                                <IonButton onClick={() => createAccount()}>Ustvari račun</IonButton>
+                            </IonCardContent>
+                        </div>
                     </IonCardContent>
                 </IonCard>
             </IonContent>
