@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonIcon, IonContent, IonPage, IonInput, IonButton, IonText, useIonAlert, IonHeader, IonToolbar, isPlatform, IonRouterLink, IonNavLink, IonLabel, IonItem, IonImg, IonTitle } from '@ionic/react';
+import { IonCard, IonCardContent, IonCardHeader, IonAlert, IonIcon, IonContent, IonPage, IonInput, IonButton, IonText, useIonAlert, IonHeader, IonToolbar, isPlatform, IonRouterLink, IonNavLink, IonLabel, IonItem, IonImg, IonTitle } from '@ionic/react';
 import { closeCircle, cardOutline } from 'ionicons/icons';
 import '../styles/CardPayment.css'
 import BackButton from '../components/BackButton';
@@ -10,8 +10,9 @@ import SubmitOrder from '../hooks/SubmitOrder';
 const CardPayment: React.FC = () => {
     const [name, setName] = useState("Test name")
     const [cardNo, setcardNo] = useState("1234 1234 1234 1234")
-    const [expDate, setexpDate] = useState("01/12")
-    const [secCode, setsecCode] = useState("01/12")
+    const [expDate, setexpDate] = useState("00/00")
+    const [secCode, setsecCode] = useState("000")
+    const [showAlert, setShowAlert] = useState(false);
 
     const [present] = useIonToast();
 
@@ -49,6 +50,15 @@ const CardPayment: React.FC = () => {
 
                 }
             })
+        }
+    }
+
+    const validCreditCardInput = () => {
+        if (name === "Test name" || name === "" || cardNo === "1234 1234 1234 1234" || cardNo === "" || expDate === "00/00" || expDate === "" || secCode === "000" || secCode === "") {
+            alert("Prosim izpolni vsa polja")
+        }
+        else {
+            SubmitOrder(true)
         }
     }
 
@@ -214,7 +224,7 @@ const CardPayment: React.FC = () => {
                     </div>
                 </div>
                 <div className='buttons-container'>
-                    <IonButton color={"favorite-button-pay"} onClick={() => { SubmitOrder(true) }}><b>Oddaj naročilo in plačaj</b> &nbsp; &nbsp; <IonIcon icon={cardOutline}></IonIcon></IonButton>
+                    <IonButton color={"favorite-button-pay"} onClick={() => { validCreditCardInput() }}><b>Oddaj naročilo in plačaj</b> &nbsp; &nbsp; <IonIcon icon={cardOutline}></IonIcon></IonButton>
                 </div>
             </IonContent>
         </IonPage>
