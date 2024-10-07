@@ -37,38 +37,38 @@ const Login: React.FC = () => {
     }
 
     return (
-        <IonPage>
-            <IonHeader>
-                <IonToolbar>
+        <IonPage placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+            <IonHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                <IonToolbar placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                 </IonToolbar>
             </IonHeader>
 
-            <IonContent>
-                <IonCard>
-                    <IonCardHeader>
-                        <IonCardSubtitle color={"medium"} >PRIJAVI SE ZA UPORABO APLIKACIJE</IonCardSubtitle>
-                        <IonCardTitle color={"favorite-white"}>Prijava</IonCardTitle>
+            <IonContent placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                <IonCard placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                    <IonCardHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                        <IonCardSubtitle color={"medium"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} >PRIJAVI SE ZA UPORABO APLIKACIJE</IonCardSubtitle>
+                        <IonCardTitle color={"favorite-white"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Prijava</IonCardTitle>
                     </IonCardHeader>
-                    <IonCardContent>
+                    <IonCardContent placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                         <div className='userText'>
-                            <IonText color={"favorite-white"}>Email</IonText>
+                            <IonText color={"favorite-white"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Email</IonText>
                         </div>
-                        <IonInput className='userInput' color={"favorite-black"} placeholder='  Email' type='email' onIonChange={(e: any) => setUsername(e.target.value)}></IonInput>
+                        <IonInput className='userInput' color={"favorite-black"} placeholder='  Email' type='email' onIonChange={(e: any) => setUsername(e.target.value)} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonInput>
 
                         <p style={{ padding: "2px" }}></p>
                         <div className='userText'>
-                            <IonText color={"favorite-white"}>Geslo</IonText>
+                            <IonText color={"favorite-white"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Geslo</IonText>
                         </div>
-                        <IonInput className='userInput' color={"favorite-black"} placeholder='  Geslo' type='password' onIonChange={(e: any) => setPassword(e.target.value)}></IonInput>
-                        <IonCardContent class='login-card-buttons'>
-                            <IonButton onClick={() => loginUsr()}>Prijava</IonButton>
-                            <IonText><a className='create-account-link' href='/registration' style={{ color: "white" }}>Nimaš računa? Ustvari ga!</a></IonText>
+                        <IonInput className='userInput' color={"favorite-black"} placeholder='  Geslo' type='password' onIonChange={(e: any) => setPassword(e.target.value)} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonInput>
+                        <IonCardContent class='login-card-buttons' placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                            <IonButton onClick={() => loginUsr()} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Prijava</IonButton>
+                            <IonText placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}><a className='create-account-link' href='/registration' style={{ color: "white" }}>Nimaš računa? Ustvari ga!</a></IonText>
                         </IonCardContent>
 
                         <div className='providersLogin'>
-                            <IonImg className='provider' src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1280px-Google_%22G%22_Logo.svg.png' onClick={() => loginWithGoogle()}></IonImg>
-                            <IonLabel className='provider'></IonLabel>
-                            <IonImg className='provider' src='https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/1024px-Facebook_f_logo_%282021%29.svg.png?20210818083032' onClick={() => loginWithFacebook()}></IonImg>
+                            <IonImg className='provider' src='https://w7.pngwing.com/pngs/326/85/png-transparent-google-logo-google-text-trademark-logo.png' onClick={() => loginWithGoogle()} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonImg>
+                            <IonLabel className='provider' placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonLabel>
+                            <IonImg className='provider' src='https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/1024px-Facebook_f_logo_%282021%29.svg.png?20210818083032' onClick={() => loginWithFacebook()} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonImg>
                         </div>
                     </IonCardContent>
                 </IonCard>

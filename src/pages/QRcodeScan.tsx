@@ -32,20 +32,20 @@ class QRcodeScan extends React.Component {
         };
 
         return (
-            <IonPage>
-                <IonHeader>
-                    <IonToolbar>
-                        <IonTitle>Ionic QR/Barcode Scanner Example</IonTitle>
+            <IonPage placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                <IonHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                    <IonToolbar placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                        <IonTitle placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Ionic QR/Barcode Scanner Example</IonTitle>
                     </IonToolbar>
                 </IonHeader>
-                <IonContent className="ion-padding">
+                <IonContent className="ion-padding" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                     <strong>Scan Content</strong>
-                    <IonButton color="danger" expand="block" onClick={dataToScan}>
+                    <IonButton color="danger" expand="block" onClick={dataToScan} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                         Scan Data
                     </IonButton>
                     <strong>Generate QR code</strong>
-                    <IonItem>
-                        <IonInput name='dataEncode' value={this.state.encodeResponse} onIonChange={this.handleChange} clearInput></IonInput>
+                    <IonItem placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                        <IonInput name='dataEncode' value={this.state.encodeResponse} onIonChange={this.handleChange} clearInput placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonInput>
                     </IonItem>
                 </IonContent>
             </IonPage >

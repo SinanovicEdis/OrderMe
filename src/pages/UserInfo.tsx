@@ -43,34 +43,34 @@ const UserInfo: React.FC = () => {
 
 
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
+    <IonPage placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+      <IonHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+        <IonToolbar placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
           <BackButton path={"home"}></BackButton>
-          <IonTitle>Uporabnik</IonTitle>
-          <IonIcon icon={logOutOutline} size="large" style={{ paddingRight: "10px" }} slot="end" onClick={() => { logOut() }}></IonIcon>
+          <IonTitle placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Uporabnik</IonTitle>
+          <IonIcon icon={logOutOutline} size="large" style={{ paddingRight: "10px" }} slot="end" onClick={() => { logOut(); }} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonIcon>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
         <div className='user-container'>
           <div className='user-item'>
-            <IonIcon icon={personCircleOutline}></IonIcon>
+            <IonIcon icon={personCircleOutline} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonIcon>
             <div>
-              <IonText><b>{user.email}</b></IonText>
+              <IonText placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}><b>{user.email}</b></IonText>
             </div>
           </div>
           <div className='user-item'>
             <div className='finished-orders'>
-              <IonLabel>Oddana naročila</IonLabel>
+              <IonLabel placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Oddana naročila</IonLabel>
             </div>
             <div className='user-info-container'>
               {orders.length !== 0 ? orders?.map((order: any) => (
                 <>
-                  <IonLabel className='user-info-container-item' color={"favorite-black"}>{order.date}</IonLabel>
+                  <IonLabel className='user-info-container-item' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{order.date}</IonLabel>
                   <div className='user-info-container-item-arrow'>
-                    <IonLabel color={"favorite-black"}>
+                    <IonLabel color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                       <Link to={`/order-info/${order.order_uuid}`} color={"favorite-black"}>
-                        <IonIcon icon={arrowForwardOutline}></IonIcon>
+                        <IonIcon icon={arrowForwardOutline} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonIcon>
                       </Link>
                     </IonLabel>
                   </div>

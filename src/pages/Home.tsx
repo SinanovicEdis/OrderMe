@@ -14,6 +14,8 @@ import '../styles/Home.css'
 import '../styles/Menu.css'
 import { useContext, useEffect, useState } from 'react';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import { useIonToast } from '@ionic/react';
+
 
 interface Artikel {
   title: string;
@@ -35,6 +37,7 @@ const Home: React.FC = () => {
   const user = JSON.parse(localStorage.getItem("user") || "")
   var userName = getUserName()
   const [presentAlert] = useIonAlert();
+  const [present] = useIonToast();
 
   const sendGetRequest = () => {
     return axios({
@@ -94,6 +97,24 @@ const Home: React.FC = () => {
     }
   }, [])
 
+  const presentToast = (position: 'top' | 'middle' | 'bottom') => {
+    present({
+      message: 'Dodano v košarico!',
+      duration: 1500,
+      position: position,
+      color: 'medium',
+      buttons: [
+        {
+          text: 'Odpri košarico',
+          role: 'info',
+          handler: () => {
+            window.location.assign("cart")
+          },
+        }
+      ],
+    });
+  };
+
   function addArticleToCart(uid_: string) {
     const article = drinks.filter((e: any) => e.uuid === uid_)
     if (localStorage.getItem("cart")) {
@@ -105,8 +126,10 @@ const Home: React.FC = () => {
       localStorage.setItem("cart", JSON.stringify(article))
     }
 
+    presentToast('top')
     hapticsImpact()
   }
+
 
   const hapticsImpact = async () => {
     await Haptics.impact({ style: ImpactStyle.Heavy });
@@ -140,53 +163,53 @@ const Home: React.FC = () => {
   }
 
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
+    <IonPage placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+      <IonHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+        <IonToolbar placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
           {selectedItem &&
             <>
-              <IonTitle>{selectedItem.title}</IonTitle>
+              <IonTitle placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{selectedItem.title}</IonTitle>
             </>
           }
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent fullscreen placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
         {!selectedItem &&
           <><div className='upper'>
             <div className='upper-item-fabBtn'>
               <FloatingButton slot='fixed' vertical='top' horizontal='start' edge={true} />
             </div>
             <div className='upper-item-text'>
-              <IonText color={"favorite-black"}><IonText color={"favorite-name"}><b>{userName}</b></IonText>, <b>dobrodošel!</b></IonText>
+              <IonText color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}><IonText color={"favorite-name"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}><b>{userName}</b></IonText>, <b>dobrodošel!</b></IonText>
             </div>
           </div>
             <div className='middle'>
               <SearchBar />
 
-              <IonSegment value={selectedSegment} color={"primary"}>
-                <IonSegmentButton value="coffee" onClick={() => { selectFilter("coffee") }}>
-                  <IonLabel>Kave</IonLabel>
+              <IonSegment value={selectedSegment} color={"primary"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                <IonSegmentButton value="coffee" onClick={() => { selectFilter("coffee"); }} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                  <IonLabel placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Kave</IonLabel>
                 </IonSegmentButton>
-                <IonSegmentButton value="non-alcoholic" onClick={() => { selectFilter("non-alcoholic") }}>
-                  <IonLabel>Brez alk. pijače</IonLabel>
+                <IonSegmentButton value="non-alcoholic" onClick={() => { selectFilter("non-alcoholic"); }} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                  <IonLabel placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Brez alk. pijače</IonLabel>
                 </IonSegmentButton>
-                <IonSegmentButton value="wine" onClick={() => { selectFilter("wine") }}>
-                  <IonLabel>Vina</IonLabel>
+                <IonSegmentButton value="wine" onClick={() => { selectFilter("wine"); }} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                  <IonLabel placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Vina</IonLabel>
                 </IonSegmentButton>
-                <IonSegmentButton value="tea" onClick={() => { selectFilter("tea") }}>
-                  <IonLabel>Čaji</IonLabel>
+                <IonSegmentButton value="tea" onClick={() => { selectFilter("tea"); }} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                  <IonLabel placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Čaji</IonLabel>
                 </IonSegmentButton>
               </IonSegment>
             </div><div className='menu'>
               {!filter &&
                 drinks?.map((drink: any) => (
                   < div className='menu2' >
-                    <IonText color={"favorite-black"}>{drink.title}</IonText>
-                    <IonImg className='menu-item' src={drink.image} alt='' onClick={() => { setSelectedItem(drink); }} />
+                    <IonText color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{drink.title}</IonText>
+                    <IonImg className='menu-item' src={drink.image} alt='' onClick={() => { setSelectedItem(drink); }} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
 
                     <div className="ion-activatable ripple-parent rounded-rectangle" onClick={() => addArticleToCart(drink.uuid)}>
                       <p style={{ color: "white" }}>Dodaj</p>
-                      <IonRippleEffect>
+                      <IonRippleEffect placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                       </IonRippleEffect>
                     </div>
                   </div>
@@ -195,12 +218,12 @@ const Home: React.FC = () => {
                 drinks?.map((drink: any) => (
                   drink.category === filter ?
                     < div className='menu2' >
-                      <IonText color={"favorite-black"}>{drink.title}</IonText>
-                      <IonImg className='menu-item' src={drink.image} alt='' onClick={() => { setSelectedItem(drink); }} />
+                      <IonText color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{drink.title}</IonText>
+                      <IonImg className='menu-item' src={drink.image} alt='' onClick={() => { setSelectedItem(drink); }} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
 
                       <div className="ion-activatable ripple-parent rounded-rectangle" onClick={() => addArticleToCart(drink.uuid)}>
                         <p style={{ color: "white" }}>Dodaj</p>
-                        <IonRippleEffect>
+                        <IonRippleEffect placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                         </IonRippleEffect>
                       </div>
                     </div>
@@ -211,26 +234,26 @@ const Home: React.FC = () => {
         }
         {!isLoaded &&
           <>
-            <IonItem>
-              <IonSpinner name='dots' hidden={isLoaded}></IonSpinner>
+            <IonItem placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+              <IonSpinner name='dots' hidden={isLoaded} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonSpinner>
             </IonItem>
           </>
         }
         {
           selectedItem &&
           <div className='item-card' onClick={() => setSelectedItem(undefined)}>
-            <IonCard>
+            <IonCard placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
               <img src={selectedItem.image} alt="item img" />
-              <IonCardHeader>
-                <IonCardSubtitle color={'favorite-white'}>{selectedItem.title}</IonCardSubtitle>
-                <IonCardTitle color={"favorite-white"}>{(selectedItem.price).toFixed(2)}€</IonCardTitle>
+              <IonCardHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                <IonCardSubtitle color={'favorite-white'} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{selectedItem.title}</IonCardSubtitle>
+                <IonCardTitle color={"favorite-white"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{(selectedItem.price).toFixed(2)}€</IonCardTitle>
               </IonCardHeader>
-              <IonCardContent>
-                <IonLabel color={"medium"}>{selectedItem.description}</IonLabel>
+              <IonCardContent placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                <IonLabel color={"medium"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{selectedItem.description}</IonLabel>
               </IonCardContent>
-              <IonCardTitle>
-                <IonIcon icon={addCircleOutline} onClick={() => addArticleToCart(selectedItem.uuid)} size='large' color='favorite-white' style={{ padding: "10px" }}></IonIcon>
-                <IonIcon icon={heartOutline} size='large' color='favorite-white' style={{ padding: "10px" }}></IonIcon>
+              <IonCardTitle placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                <IonIcon icon={addCircleOutline} onClick={() => addArticleToCart(selectedItem.uuid)} size='large' color='favorite-white' style={{ padding: "10px" }} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonIcon>
+                <IonIcon icon={heartOutline} size='large' color='favorite-white' style={{ padding: "10px" }} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonIcon>
               </IonCardTitle>
             </IonCard>
           </div>

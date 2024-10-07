@@ -19,43 +19,43 @@ const Cart: React.FC = () => {
     }
 
     return (
-        <IonPage>
-            <IonHeader>
-                <IonToolbar>
+        <IonPage placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+            <IonHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                <IonToolbar placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                     <BackButton path={"Home"} />
-                    <IonTitle>Kosarica</IonTitle>
+                    <IonTitle placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Kosarica</IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent>
+            <IonContent placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                 {itemsCount ?
                     <>
                         <div className='item-container'>
                             {items.map((item: any) => (
                                 <div className='item-container2'>
-                                    <IonAvatar className='item-item2'>
+                                    <IonAvatar className='item-item2' placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                                         <img src={item.image} alt={item.title + " img"} />
                                     </IonAvatar>
-                                    <IonText className='item-item2' color={"favorite-black"}>{item.title}</IonText>
-                                    <IonIcon className='item-item2' size='' icon={closeCircle} onClick={() => removeItem(item)}></IonIcon>
+                                    <IonText className='item-item2' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{item.title}</IonText>
+                                    <IonIcon className='item-item2' size='' icon={closeCircle} onClick={() => removeItem(item)} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonIcon>
                                 </div>
                             ))}
                         </div>
                         <div className='info-container'>
-                            <IonLabel className='info-container-item' color={"favorite-black"}>Stevilo izdelkov</IonLabel>
-                            <IonLabel className='info-container-item' color={"favorite-black"}>{itemsCount}</IonLabel>
-                            <IonLabel className='info-container-item' color={"favorite-black"}>DDV</IonLabel>
-                            <IonLabel className='info-container-item' color={"favorite-black"}>{VAT}€</IonLabel>
-                            <IonLabel className='info-container-item-last' color={"favorite-black"}><b>Skupaj</b></IonLabel>
-                            <IonLabel className='info-container-item-last' color={"favorite-black"}><b>{totalPrice}€</b></IonLabel>
+                            <IonLabel className='info-container-item' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Stevilo izdelkov</IonLabel>
+                            <IonLabel className='info-container-item' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{itemsCount}</IonLabel>
+                            <IonLabel className='info-container-item' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>DDV</IonLabel>
+                            <IonLabel className='info-container-item' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{VAT}€</IonLabel>
+                            <IonLabel className='info-container-item-last' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}><b>Skupaj</b></IonLabel>
+                            <IonLabel className='info-container-item-last' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}><b>{totalPrice}€</b></IonLabel>
                         </div>
 
                         <div className='buttons-container'>
-                            <IonButton color={"favorite-button-pay"} onClick={() => { window.location.assign("/card-payment") }}><b>Oddaj naročilo in plačaj</b> &nbsp; &nbsp; <IonIcon icon={cardOutline}></IonIcon></IonButton>
-                            <IonButton color={"favorite-button-pay"} onClick={() => { SubmitOrder(false) }}><b>Oddaj naročilo</b></IonButton>
+                            <IonButton color={"favorite-button-pay"} onClick={() => { window.location.assign("/card-payment"); }} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}><b>Oddaj naročilo in plačaj</b> &nbsp; &nbsp; <IonIcon icon={cardOutline} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonIcon></IonButton>
+                            <IonButton color={"favorite-button-pay"} onClick={() => { SubmitOrder(false); }} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}><b>Oddaj naročilo</b></IonButton>
                         </div>
                     </>
                     : <>
-                        <IonTitle>Košarica je prazna</IonTitle>
+                        <IonTitle placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Košarica je prazna</IonTitle>
                     </>
                 }
 

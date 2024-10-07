@@ -53,14 +53,14 @@ const Invoice: React.FC = () => {
 
 
     return (
-        <IonPage>
-            <IonHeader>
-                <IonToolbar>
+        <IonPage placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+            <IonHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                <IonToolbar placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                     <BackButton path={"/order-info/" + param.id} />
-                    <IonTitle>Račun</IonTitle>
+                    <IonTitle placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Račun</IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent>
+            <IonContent placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                 <div style={{ backgroundColor: "white", margin: "10px", color: "black", borderRadius: "20px" }}>
                     <div className="header-container">
                         <div className="header-item">

@@ -67,14 +67,14 @@ const OrderInfo: React.FC = () => {
 
 
     return (
-        <IonPage>
-            <IonHeader>
-                <IonToolbar>
+        <IonPage placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+            <IonHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                <IonToolbar placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                     <BackButton path={"/User"} />
-                    <IonTitle>{param.id}</IonTitle>
+                    <IonTitle placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{param.id}</IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent>
+            <IonContent placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                 <div className='item-container'>
                     {orders.map((item: any) => (
                         itemsCount = 0,
@@ -86,26 +86,26 @@ const OrderInfo: React.FC = () => {
                             totalPrice = item.price,
                             VAT = item.vat,
                             <div className='item-container2'>
-                                <IonAvatar className='item-item2'>
+                                <IonAvatar className='item-item2' placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                                     <img src={item2.image} alt={item2.title + " img"} />
                                 </IonAvatar>
-                                <IonText className='item-item2' color={"favorite-black"}>{item2.title}</IonText>
+                                <IonText className='item-item2' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{item2.title}</IonText>
                             </div>
                         ))
                     ))}
                     <div className='info-container'>
-                        <IonLabel className='info-container-item' color={"favorite-black"}>Stevilo izdelkov</IonLabel>
-                        <IonLabel className='info-container-item' color={"favorite-black"}>{itemsCount}</IonLabel>
-                        <IonLabel className='info-container-item' color={"favorite-black"}>DDV</IonLabel>
-                        <IonLabel className='info-container-item' color={"favorite-black"}>{VAT}€</IonLabel>
-                        <IonLabel className='info-container-item' color={"favorite-black"}>Plačano</IonLabel>
-                        <IonLabel className='info-container-item' color={"favorite-black"}>{payed.toString() === "true" ? "Da" : "Ne"}</IonLabel>
-                        <IonLabel className='info-container-item-last' color={"favorite-black"}><b>Skupaj</b></IonLabel>
-                        <IonLabel className='info-container-item-last' color={"favorite-black"}><b>{totalPrice.toFixed(2)}€</b></IonLabel>
+                        <IonLabel className='info-container-item' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Stevilo izdelkov</IonLabel>
+                        <IonLabel className='info-container-item' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{itemsCount}</IonLabel>
+                        <IonLabel className='info-container-item' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>DDV</IonLabel>
+                        <IonLabel className='info-container-item' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{VAT}€</IonLabel>
+                        <IonLabel className='info-container-item' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Plačano</IonLabel>
+                        <IonLabel className='info-container-item' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{payed.toString() === "true" ? "Da" : "Ne"}</IonLabel>
+                        <IonLabel className='info-container-item-last' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}><b>Skupaj</b></IonLabel>
+                        <IonLabel className='info-container-item-last' color={"favorite-black"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}><b>{totalPrice.toFixed(2)}€</b></IonLabel>
                     </div>
 
                     <div className='buttons-container-2'>
-                        <IonButton className='buttons-container-item' color={"favorite-button-pay"} onClick={() => { window.location.assign("/invoice/" + param.id) }}><b>Račun</b></IonButton>
+                        <IonButton className='buttons-container-item' color={"favorite-button-pay"} onClick={() => { window.location.assign("/invoice/" + param.id); }} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}><b>Račun</b></IonButton>
                     </div>
                 </div>
 

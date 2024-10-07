@@ -90,13 +90,13 @@ const CardPayment: React.FC = () => {
     }
 
     return (
-        <IonPage>
-            <IonHeader>
-                <IonToolbar>
+        <IonPage placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+            <IonHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                <IonToolbar placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                     <BackButton path={"/cart"} />
                 </IonToolbar>
             </IonHeader>
-            <IonContent>
+            <IonContent placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                 <div>
                     <div className="container preload">
                         <div className="creditcard">
@@ -198,33 +198,33 @@ const CardPayment: React.FC = () => {
 
                     <div className="form-container">
                         <div className="field-container">
-                            <IonItem color={"none"}>
-                                <IonLabel position='floating'>Name</IonLabel>
-                                <IonInput id="name" type="text" onInput={(e) => handleNameInputChange(e)}></IonInput>
+                            <IonItem color={"none"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                                <IonLabel position='floating' placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Name</IonLabel>
+                                <IonInput id="name" type="text" onInput={(e) => handleNameInputChange(e)} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonInput>
                             </IonItem>
                         </div>
                         <div className="field-container">
-                            <IonItem color={"none"}>
-                                <IonLabel position='floating'>Card Number</IonLabel>
-                                <IonInput id="cardnumber" type="number" onInput={(e) => handleCardNoInputChange(e)} />
+                            <IonItem color={"none"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                                <IonLabel position='floating' placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Card Number</IonLabel>
+                                <IonInput id="cardnumber" type="number" onInput={(e) => handleCardNoInputChange(e)} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
                             </IonItem>
                         </div>
                         <div className="field-container">
-                            <IonItem color={"none"}>
-                                <IonLabel position='floating'>Expiration (mm/yy)</IonLabel>
-                                <IonInput id="expirationdate" type="number" onInput={(e) => handleExpDateInputChange(e)} />
+                            <IonItem color={"none"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                                <IonLabel position='floating' placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Expiration (mm/yy)</IonLabel>
+                                <IonInput id="expirationdate" type="number" onInput={(e) => handleExpDateInputChange(e)} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
                             </IonItem>
                         </div>
                         <div className="field-container">
-                            <IonItem color={"none"}>
-                                <IonLabel position='floating'>Security Code</IonLabel>
-                                <IonInput id="securitycode" type="text" onInput={(e) => handleSecCodeInputChange(e)} />
+                            <IonItem color={"none"} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                                <IonLabel position='floating' placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Security Code</IonLabel>
+                                <IonInput id="securitycode" type="text" onInput={(e) => handleSecCodeInputChange(e)} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
                             </IonItem>
                         </div>
                     </div>
                 </div>
                 <div className='buttons-container'>
-                    <IonButton color={"favorite-button-pay"} onClick={() => { validCreditCardInput() }}><b>Oddaj naročilo in plačaj</b> &nbsp; &nbsp; <IonIcon icon={cardOutline}></IonIcon></IonButton>
+                    <IonButton color={"favorite-button-pay"} onClick={() => { validCreditCardInput(); }} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}><b>Oddaj naročilo in plačaj</b> &nbsp; &nbsp; <IonIcon icon={cardOutline} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonIcon></IonButton>
                 </div>
             </IonContent>
         </IonPage>

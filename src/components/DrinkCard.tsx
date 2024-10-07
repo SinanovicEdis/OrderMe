@@ -3,9 +3,9 @@ import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, 
 import '../styles/DrinkCard.css'
 const DrinkCard: React.FC = () => {
     return (
-        <IonCard>
+        <IonCard placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
             <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" width={"100%"}></img>
-            <IonButton>Dodaj</IonButton>
+            <IonButton placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Dodaj</IonButton>
 
             {/* <IonCardHeader>
                     <IonCardTitle>Card Title</IonCardTitle>

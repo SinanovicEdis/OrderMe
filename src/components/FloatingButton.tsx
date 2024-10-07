@@ -10,26 +10,26 @@ interface IPositionProps {
 
 const FloatingButton = (props: IPositionProps) => {
     return (
-        <IonContent className="ion-padding">
-            <IonFab slot={props.slot} vertical={props.vertical} horizontal={props.horizontal} edge={props.edge}>
-                <IonFabButton>
-                    <IonIcon icon={arrowDownCircle}></IonIcon>
+        <IonContent className="ion-padding" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+            <IonFab slot={props.slot} vertical={props.vertical} horizontal={props.horizontal} edge={props.edge} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                <IonFabButton placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                    <IonIcon icon={arrowDownCircle} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonIcon>
                 </IonFabButton>
-                <IonFabList side="bottom">
+                <IonFabList side="bottom" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                     {/* <IonFabButton>
                         <IonIcon icon={home}></IonIcon>
                     </IonFabButton> */}
-                    <IonFabButton onClick={() => window.location.assign("scan")}>
-                        <IonIcon icon={scan}></IonIcon>
+                    <IonFabButton onClick={() => window.location.assign("scan")} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                        <IonIcon icon={scan} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonIcon>
                     </IonFabButton>
-                    <IonFabButton onClick={() => window.location.assign("cart")}>
-                        <IonIcon icon={cart}></IonIcon>
+                    <IonFabButton onClick={() => window.location.assign("cart")} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                        <IonIcon icon={cart} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonIcon>
                     </IonFabButton>
-                    <IonFabButton onClick={() => window.location.assign("user")}>
-                        <IonIcon icon={person}></IonIcon>
+                    <IonFabButton onClick={() => window.location.assign("user")} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                        <IonIcon icon={person} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonIcon>
                     </IonFabButton>
-                    <IonFabButton>
-                        <IonIcon icon={logOut} onClick={() => logout()}></IonIcon>
+                    <IonFabButton placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                        <IonIcon icon={logOut} onClick={() => logout()} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonIcon>
                     </IonFabButton>
                 </IonFabList>
             </IonFab>

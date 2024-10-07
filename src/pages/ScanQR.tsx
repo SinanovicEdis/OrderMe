@@ -29,31 +29,31 @@ const ScanQR: React.FC = () => {
     }
 
     return (
-        <IonPage>
-            <IonHeader>
-                <IonToolbar>
+        <IonPage placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+            <IonHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                <IonToolbar placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                     <BackButton path={"home"}></BackButton>
                 </IonToolbar>
             </IonHeader>
-            <IonContent fullscreen style={{ Height: "100%" }}>
+            <IonContent fullscreen style={{ Height: "100%" }} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                 <div className="title">
                     <div style={{ whiteSpace: "normal", fontSize: "5.0vw" }}>
-                        <IonLabel color={"favorite-black"} className="title-content">Poskeniraj QR kodo,</IonLabel>
+                        <IonLabel color={"favorite-black"} className="title-content" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Poskeniraj QR kodo,</IonLabel>
                         <br></br>
-                        <IonLabel color={"favorite-black"} className="title-content">&nbsp; najdeš jo na mizi!</IonLabel>
+                        <IonLabel color={"favorite-black"} className="title-content" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>&nbsp; najdeš jo na mizi!</IonLabel>
                     </div>
                 </div>
 
                 <div className="qr-code-img-div">
-                    <IonImg className="qr-code-img" src="https://cdn-icons-png.flaticon.com/512/714/714390.png" alt="qr code scan"></IonImg>
+                    <IonImg className="qr-code-img" src="https://cdn-icons-png.flaticon.com/512/714/714390.png" alt="qr code scan" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonImg>
                 </div>
 
                 <div className="div-button" style={{ backgroundColor: "", height: "20%" }}>
-                    <IonButton color={"favorite-green"} className="scan-btn" onClick={() => scanQRcode()}>
-                        <IonIcon color="favorite-white" src={scanIcon}></IonIcon>
+                    <IonButton color={"favorite-green"} className="scan-btn" onClick={() => scanQRcode()} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                        <IonIcon color="favorite-white" src={scanIcon} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonIcon>
                         &nbsp; Scan QR code</IonButton>
                 </div>
-                <IonButton onClick={() => changeDb()}>change db</IonButton>
+                <IonButton onClick={() => changeDb()} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>change db</IonButton>
             </IonContent>
         </IonPage >
     )
