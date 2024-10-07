@@ -28,6 +28,10 @@ OrderMe is a cross-platform application that allows users to order drinks at the
 - Viewing and downloading the receipt
 - Order history overview
 
+## Requirements
+
+**Node.js version**: v20.13.1
+
 ## Installation
 
 To get a local copy up and running follow these steps:
