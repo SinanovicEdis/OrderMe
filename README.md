@@ -18,10 +18,15 @@ OrderMe is a cross-platform application that allows users to order drinks at the
 
 ## Features
 
+- User authentication (login/registration)
+- QR code scanning for table identification and menu access
 - Order drinks directly from your table
+- Filtering drinks by category
+- Searching for specific drinks
 - Real-time order updates
-- User authentication
-- QR code scanning for table identification
+- In-app payment processing
+- Viewing and downloading the receipt
+- Order history overview
 
 ## Installation
 
